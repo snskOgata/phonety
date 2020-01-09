@@ -1,3 +1,84 @@
-// Place all the styles related to the StaticPages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+  font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  box-sizing: border-box;
+}
+.home {
+  background-color: white;
+  width: 100%;
+}
+
+.trial-box {
+  background-color: blue;;
+  width: 900px;
+  margin: 50px auto;
+  padding: 30px;
+  border: 1px solid grey;
+
+  .target {
+    width: 840px;
+    &__top {
+      display: flex;
+      justify-content: space-between;
+      h4 {
+       color: white;
+       display: inline;
+      }
+      &__speed {
+        &__selector {
+          font-size:16px;
+          border:1px;
+        }
+      }
+    }
+    &__textarea {
+      margin-top: 5px;
+      padding: 10px 20px;
+      height: 200px;
+      line-height: 35px;
+      font-size: 20px;
+      height: 200;
+      width: 840px;
+      resize: none;
+    }
+    &__fixed-text {
+      display: none;
+    }
+    &__bottom {
+      margin-top: 3px;
+    }
+  }
+
+  .recognized {
+    h4 {
+      color: white;
+    }
+    margin-top: 30px;
+    &__textarea {
+      margin-top: 5px;
+      height: 200px;
+      background-color: white;
+      border: 1px solid grey;
+    }
+    &__bottom {
+      margin-top: 5px;
+    }
+  }
+
+  .btn {
+    border: 0;
+    background-color: white;
+    color: darkblue;
+    font-size: 20px;
+    border-bottom: 2px solid red;
+    border-right: 2px solid red;
+    
+    &:active {
+        background-color: lightslategray;
+        border-bottom: 2px solid black;
+        border-right: 2px solid black;
+      }
+      &:focus {
+        outline: 0;
+      }
+  }
+}
