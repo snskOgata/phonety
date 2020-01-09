@@ -1,0 +1,30 @@
+.home
+  .trial-box
+    .target
+      .target__top
+        %h4 ターゲット文
+        .target__top__speed
+          %h4 読み上げスピード:
+          %select#speed-selector.target__top__speed__selector
+            - (5..20).each do |s|
+              %option{:value=>s/10.to_f, :selected => s == 8}
+                = s/10.to_f
+      %textarea.target__textarea#target-text
+      .target__fixed-text#fixed-text
+      .target__bottom
+        %button#edit-btn.btn
+          edit
+        %button#set-btn.btn
+          set
+        %button#speech-btn.btn
+          speech
+    .recognized
+      %h4 認識文
+      .recognized__textarea#recognized-text
+      .recognized__bottom
+        %button#rec-btn.btn
+          rec
+        %button#stop-btn.btn
+          stop
+        %button#compare-btn.btn
+          compare
