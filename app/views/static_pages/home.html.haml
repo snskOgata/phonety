@@ -7,7 +7,7 @@
           %h4 読み上げスピード:
           %select#speed-selector.target__top__speed__selector
             - (5..20).each do |s|
-              %option{:value=>s/10.to_f, :selected => s == 8}
+              %option{:value=>s/10.to_f, :selected => s == 10}
                 = s/10.to_f
       %textarea.target__textarea#target-text
         I make lots of money. On weekdays, I recieve an average of 50 orders a day.

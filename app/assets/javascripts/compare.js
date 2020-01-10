@@ -1,10 +1,16 @@
 $(function () {
-  // webspeech-apiのセッティング
+  // 音声認識エンジンのセッティング
   SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
-  let recognition = new SpeechRecognition();
+  var recognition = new SpeechRecognition();
   recognition.lang = 'en_US';
   recognition.interimResults = true;
   recognition.continuous = true;
+
+  // 音声合成エンジンのセッティング
+  var synthe = new SpeechSynthesisUtterance();
+  synthe.lang = 'en-US';
+  synthe.rate = 1.0;
+
 
   // テキストフィールド
   var target_field = $("#target-text");
@@ -57,6 +63,12 @@ $(function () {
     $("#refresh-btn").prop("disabled", true).css('background-color', 'lightgrey');
     target_field.show();
     fixed_field.hide();
+  })
+
+  $('#speech-btn').on('click', function () {
+    speechSynthesis.cancel();
+    synthe.text = target_sentence;
+    speechSynthesis.speak(synthe);
   })
 
   $('#refresh-btn').on('click', function () {
