@@ -1,6 +1,7 @@
 $(function () {
-  let fixed_field = $("#fixed-text")
-  let recognized_field = $("#recognized-text")
+  var target_field = $("#target-text")
+  var fixed_field = $("#fixed-text")
+  var recognized_field = $("#recognized-text")
   $('#compare-btn').on('click', function () {
 
     $.ajax({
@@ -21,9 +22,9 @@ $(function () {
   })
 
   function showResult(operation) {
-    let target = ""
-    let recognized = ""
-    let ss
+    var target = ""
+    var recognized = ""
+    var ss
 
     $.each(operation, function (i, value) {
       ss = value.split(":")
