@@ -1,4 +1,11 @@
 $(function () {
+  // webspeech-apiのセッティング
+  SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+  let recognition = new SpeechRecognition();
+  recognition.lang = 'en_US';
+  recognition.interimResults = true;
+  recognition.continuous = true;
+
   // テキストフィールド
   var target_field = $("#target-text");
   var fixed_field = $("#fixed-text");
@@ -71,10 +78,27 @@ $(function () {
     recognition.stop();
   })
 
+  //　認識中の処理
+  var finalText = "";
+
+  recognition.onresult = function (e) {
+    var interimText = ""
+    for (var i = 0; i < e.results.length; i++) {
+      if (e.results[i].isFinal) {
+        finalText += e.results[i][0].transcript;
+        interimText = "";
+      } else {
+        interimText += e.results[i][0].transcript;
+      }
+    }
+    recognized_field.text(finalText + interimText)
+  }
+
+  // 比較結果の表示
   function showResult(operation) {
     var target = "";
     var recognized = "";
-    var ss;
+    var ss; // 操作と単語を分離 e.g.)"+:Hello" -> "+", "Hello"
 
     $.each(operation, function (i, value) {
       ss = value.split(":");
