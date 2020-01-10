@@ -74,8 +74,6 @@ module LevenShtein
     end
 
     result.reverse!
-    puts result
-
   end
 
   module_function :getOperation
