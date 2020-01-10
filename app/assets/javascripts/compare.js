@@ -1,5 +1,4 @@
 $(function () {
-  let target_field = $("#target-text")
   let fixed_field = $("#fixed-text")
   let recognized_field = $("#recognized-text")
   $('#compare-btn').on('click', function () {
