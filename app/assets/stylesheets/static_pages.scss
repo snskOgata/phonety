@@ -17,6 +17,7 @@
   .target {
     width: 840px;
     &__top {
+      margin-bottom: 5px;
       display: flex;
       justify-content: space-between;
       h4 {
@@ -31,7 +32,6 @@
       }
     }
     &__textarea {
-      margin-top: 5px;
       padding: 10px 20px;
       height: 200px;
       line-height: 35px;
@@ -39,9 +39,18 @@
       height: 200;
       width: 840px;
       resize: none;
+      
+      display: none;
     }
     &__fixed-text {
-      display: none;
+      background-color: lightgrey;
+      padding: 10px 20px;
+      height: 200px;
+      line-height: 35px;
+      font-size: 20px;
+      height: 200;
+      width: 840px;
+      // display: none;
     }
     &__bottom {
       margin-top: 3px;
@@ -55,9 +64,14 @@
     margin-top: 30px;
     &__textarea {
       margin-top: 5px;
+      padding: 10px 20px;
       height: 200px;
+      line-height: 35px;
+      font-size: 20px;
+      height: 200;
+      width: 840px;
       background-color: white;
-      border: 1px solid grey;
+      border: 1px solid black;
     }
     &__bottom {
       margin-top: 5px;
