@@ -10,9 +10,9 @@
               %option{:value=>s/10.to_f, :selected => s == 10}
                 = s/10.to_f
       %textarea.target__textarea#target-text
-        I make lots of money. On weekdays, I recieve an average of 50 orders a day.
+        I am not discouraged, because every wrong attempt discarded is another step forward.
       .target__fixed-text#fixed-text
-        I make lots of money. On weekdays, I recieve an average of 50 orders a day.
+        I am not discouraged, because every wrong attempt discarded is another step forward.
       .target__bottom
         .target__bottom__left
           %button#edit-btn.btn
@@ -22,12 +22,13 @@
           %button#refresh-btn.btn
             refresh
         .target__bottom__right
-          %button#speech-btn.btn
-            speech
+          %i.fa.fa-play.fa-#speech-btn.icon
+          %i.fa.fa-stop.fa-#cancel-btn.icon
+            
     .recognized
       %h4 認識文
       .recognized__textarea#recognized-text
-        I make lot of money. On weekdays, I recieved an average of 50 orders a day.
+        I am not discouraged, because every wrong attempt discarded is another step forward.
       .recognized__bottom
         %button#rec-btn.btn
           rec
