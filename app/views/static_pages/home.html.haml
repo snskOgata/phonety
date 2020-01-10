@@ -10,6 +10,7 @@
               %option{:value=>s/10.to_f, :selected => s == 8}
                 = s/10.to_f
       %textarea.target__textarea#target-text
+        I make lots of money. On weekdays, I recieve an average of 50 orders a day.
       .target__fixed-text#fixed-text
         I make lots of money. On weekdays, I recieve an average of 50 orders a day.
       .target__bottom
@@ -19,6 +20,8 @@
           set
         %button#speech-btn.btn
           speech
+        %button#refresh-btn.btn
+          refresh
     .recognized
       %h4 認識文
       .recognized__textarea#recognized-text
