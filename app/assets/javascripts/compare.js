@@ -46,6 +46,10 @@ $(function () {
       })
   })
 
+  $("#speed-selector").change(function () {
+    synthe.rate = $(this).val();
+  });
+
   // セットボタンを押すと、値を渡して固定フィールドに切り替える
   $('#set-btn').on('click', function () {
     $("#edit-btn").prop("disabled", false).css('background-color', 'white');
