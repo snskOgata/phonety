@@ -95,9 +95,8 @@ $(function () {
   })
 
   //　認識中の処理
-  var finalText = "";
-
   recognition.onresult = function (e) {
+    var finalText = "";
     var interimText = ""
     for (var i = 0; i < e.results.length; i++) {
       if (e.results[i].isFinal) {
