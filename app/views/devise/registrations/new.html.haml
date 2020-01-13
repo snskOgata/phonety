@@ -1,0 +1,34 @@
+= stylesheet_link_tag "/app/assets/stylesheets/user_form.scss", :media => "all"
+.user-management-wrapper
+  .left-container
+    .left-container__upper
+      .left-container__upper__title
+        %h1 Create Account
+      .left-container__upper__about
+        新規アカウントの作成
+    .left-container__lower
+      =link_to "Log in", new_user_session_path, class: "left-container__lower__link"
+  .right-container
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .field
+        = f.label :name, "Name"
+        %br/
+        = f.text_field :name, autofocus: true, autocomplete: "name"
+      .field
+        = f.label :email, "Eメール"
+        %br/
+        = f.email_field :email, autocomplete: "email"
+      .field
+        = f.label :password, "パスワード"
+        - if @minimum_password_length
+          %em
+            (英数字#{@minimum_password_length} 文字以上)
+        %br/
+        = f.password_field :password, autocomplete: "new-password"
+      .field
+        = f.label :password_confirmation, "パスワード(確認用)"
+        %br/
+        = f.password_field :password_confirmation, autocomplete: "new-password"
+      .actions
+        = f.submit "Create Account"

@@ -1,0 +1,32 @@
+.user-page
+  .left-container
+    .user
+      = image_tag 'profile-img.jpg', alt: 'user-image', size: "200x200", class: "user__image"
+      .user__name
+        = current_user.name
+      .user__goal
+        .user__goal__header
+          目標：
+        %textarea.user__goal__content#goal-text{disabled:'true', rows: '4'}
+          = current_user.goal
+        = link_to "編集", "#", class: "user__goal__btn", id: "goal-edit-btn"
+        = link_to "更新", "#", class: "user__goal__btn", id: "goal-update-btn"
+          
+  .right-container
+    .right-container__upper
+      .contents
+        = link_to "今日やる復習", "#" , class: "content"
+        = link_to "新しく学習を始める", "#" , class: "content content__even"
+        %hr/
+        = link_to "今日新しく学んだこと", "#" , class: "content content"
+        = link_to "学習一覧", "#" , class: "content content__even"
+    %hr/
+    .right-container__lower
+      .progress
+        .progress__header
+          .progress__header__left
+            進捗表
+          .progress__header__right
+            総学習数：200
+        .progress__container
+          JS-Calendar-Graph

@@ -13,11 +13,18 @@
         =link_to root_path do
           %h1 Phonety
       .header__right
-        = link_to "#", class: "header__right__link" do
-          ログイン
-        = link_to "#", class: "header__right__link" do
-          新規登録
-    = yield
+        - if user_signed_in?
+          = link_to current_user, class: "header__right__link" do
+            = current_user.name
+          = link_to destroy_user_session_path, class: "header__right__link user_name", method: :delete, data: { confirm: "ログアウトします" } do
+            ログアウト
+        - else
+          = link_to new_user_session_path, class: "header__right__link" do
+            ログイン
+          = link_to new_user_registration_path, class: "header__right__link" do
+            新規登録
+    %main
+      = yield
 
     %footer.footer
       .footer__box
@@ -25,9 +32,9 @@
           %h2 Phonety
           %p Learn to Grow
           .footer__box__left__links
-            = link_to "#", class: "footer__box__left__links__link" do
+            = link_to "https://twitter.com/snskOgata", class: "footer__box__left__links__link", target: "_blank" do
               Twitter
-            = link_to "#", class: "footer__box__left__links__link" do
+            = link_to "https://qiita.com/snskOgata", class: "footer__box__left__links__link", target: "_blank" do
               Qiita
         .footer__box__right
           %h4 Phonety
