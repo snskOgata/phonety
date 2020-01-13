@@ -13,10 +13,16 @@
         =link_to root_path do
           %h1 Phonety
       .header__right
-        = link_to new_user_session_path, class: "header__right__link" do
-          ログイン
-        = link_to new_user_registration_path, class: "header__right__link" do
-          新規登録
+        - if user_signed_in?
+          = link_to "#", class: "header__right__link" do
+            = current_user.name
+          = link_to destroy_user_session_path, class: "header__right__link user_name", method: :delete, data: { confirm: "ログアウトします" } do
+            ログアウト
+        - else
+          = link_to new_user_session_path, class: "header__right__link" do
+            ログイン
+          = link_to new_user_registration_path, class: "header__right__link" do
+            新規登録
     %main
       = yield
 
