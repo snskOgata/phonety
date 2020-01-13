@@ -1,0 +1,94 @@
+.user-management-wrapper {
+  margin: 50px auto;
+  padding: 50px;
+  width: 800px;
+  border: 1px solid #cccccc;
+  display: flex;
+  .left-container{
+    width: 400px;
+    .left-container__upper{
+      padding-bottom: 60px;
+      .left-container__upper__title {
+        font-size: 36px;
+        color: red;
+        padding-bottom: 10px;
+      }
+      .left-container__upper__about {
+        font-size: 12px;
+      }
+    }
+    .left-container__lower {
+      width: 350px;
+      .left-container__lower__link {
+        padding: 20px;
+        color: white;
+        background-color: lightgrey;
+        &:active {
+          background-color: grey;
+        }
+        
+      }
+    }
+  }
+  .right-container{
+    width: 350px;
+    form {
+      padding-bottom: 20px;
+      width: 350;
+    }
+    .field {
+      padding-bottom: 10px;
+      label{
+        font-size: 14px;
+      }
+      input {
+        width: 350px;
+      }
+    }
+    .actions input{
+      background-color: lightskyblue;
+      color: white;
+      border: 0;
+      cursor: pointer;
+      padding: 15px;
+      &:active {
+        background-color: lightslategray;
+      }
+      &:focus {
+        outline: 0;
+      }
+    }
+  }
+  .delete-field {
+    display: flex;
+    justify-content: space-between;
+    #delete-btn {
+      text-decoration: none;
+      width: 50px;
+      height: 30px;
+      color: red;
+      border: 1px solid red;
+      line-height: 30px;
+      text-align: center;
+      &:active {
+        background-color: red;
+        color: white;
+      }
+    }
+  }
+
+  #error_explanation {
+    font-size: 12px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid ligh;
+    h2 {
+      padding-bottom: 10px;
+      color: red;
+    }
+    ul {
+      list-style: disc;
+      padding-left: 15px;
+    }
+  }
+}
