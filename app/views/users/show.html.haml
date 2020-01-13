@@ -1,14 +1,14 @@
 .user-page
   .left-container
     .user
+      = image_tag 'profile-img.jpg', alt: 'user-image', size: "200x200", class: "user__image"
       .user__name
         = current_user.name
-      = image_tag 'profile-img.jpg', alt: 'user-image', size: "120x120", class: "user__image"
       .user__goal
-        .user__goal__head
+        .user__goal__header
           目標：
-        %textarea.user__goal__content#goal-text{disabled:'true'}
-          TOEIC900点
+        %textarea.user__goal__content#goal-text{disabled:'true', rows: '4'}
+          = current_user.goal
         = link_to "編集", "#", class: "user__goal__btn", id: "goal-edit-btn"
         = link_to "更新", "#", class: "user__goal__btn", id: "goal-update-btn"
           

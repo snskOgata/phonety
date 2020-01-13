@@ -4,7 +4,7 @@
   justify-content: center;
 
   .left-container {
-    width: 180px;
+    width: 250px;
     padding-top: 20px;
     margin-right: 50px;
     border-right: 1px solid lightgrey;
@@ -15,16 +15,20 @@
         height: 15px;
         line-height: 15px;
         font-size: 14px;
+        margin-bottom: 20px;
       }
       &__image {
         display: block;
-        margin: 5px auto 30px auto;
+        margin: 5px auto;
         text-align:center;
       }
       &__goal {
+        &__header {
+          font-size: 14px;
+          margin-bottom: 3px;
+        }
         &__content {
-          resize: none;
-          min-height: 15px;
+          resize: none;;
           width: calc(100% - 20px);
           margin-right: 20px;
           font-size: 15px;
