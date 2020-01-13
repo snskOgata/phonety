@@ -7,7 +7,7 @@
       .user__goal
         .user__goal__head
           目標：
-        %textarea.user__goal__content{disabled:'true'}
+        %textarea.user__goal__content#goal-text{disabled:'true'}
           TOEIC900点
         = link_to "編集", "#", class: "user__goal__btn", id: "goal-edit-btn"
         = link_to "更新", "#", class: "user__goal__btn", id: "goal-update-btn"

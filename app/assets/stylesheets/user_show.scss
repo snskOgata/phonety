@@ -30,6 +30,7 @@
           font-size: 15px;
           padding: 10px;
           border: 1px solid lightgrey;
+          background-color: #f5f5f5;
         }
         &__btn {
           display: block;
@@ -47,10 +48,6 @@
             outline: 0;
             background-color: lightslategray;
           }
-        }
-
-        #goal-update-btn {
-          display: none;
         }
       }
     }
