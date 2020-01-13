@@ -31,7 +31,7 @@
           padding: 10px;
           border: 1px solid lightgrey;
         }
-        &__edit {
+        &__btn {
           display: block;
           text-decoration: none;
           background-color: skyblue;
@@ -47,6 +47,10 @@
             outline: 0;
             background-color: lightslategray;
           }
+        }
+
+        #goal-update-btn {
+          display: none;
         }
       }
     }
