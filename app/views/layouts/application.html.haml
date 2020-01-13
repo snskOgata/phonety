@@ -13,9 +13,9 @@
         =link_to root_path do
           %h1 Phonety
       .header__right
-        = link_to "#", class: "header__right__link" do
+        = link_to new_user_session_path, class: "header__right__link" do
           ログイン
-        = link_to "#", class: "header__right__link" do
+        = link_to new_user_registration_path, class: "header__right__link" do
           新規登録
     = yield
 
