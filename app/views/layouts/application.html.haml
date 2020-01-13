@@ -17,7 +17,8 @@
           ログイン
         = link_to new_user_registration_path, class: "header__right__link" do
           新規登録
-    = yield
+    %main
+      = yield
 
     %footer.footer
       .footer__box
