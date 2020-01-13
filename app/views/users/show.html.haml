@@ -1,1 +1,31 @@
-%h1 Hello
+.user-page
+  .left-container
+    .user
+      .user__name
+        = current_user.name
+      = image_tag 'profile-img.jpg', alt: 'user-image', size: "120x120", class: "user__image"
+      .user__goal
+        .user__goal__head
+          目標：
+        %textarea.user__goal__content{disabled:'true'}
+          TOEIC900点
+        = link_to "編集", "#", class: "user__goal__edit", id: "goal-edit-btn"
+          
+  .right-container
+    .right-container__upper
+      .contents
+        = link_to "今日やる復習", "#" , class: "content"
+        = link_to "新しく学習を始める", "#" , class: "content content__even"
+        %hr/
+        = link_to "今日新しく学んだこと", "#" , class: "content content"
+        = link_to "学習一覧", "#" , class: "content content__even"
+    %hr/
+    .right-container__lower
+      .progress
+        .progress__header
+          .progress__header__left
+            進捗表
+          .progress__header__right
+            総学習数：200
+        .progress__container
+          JS-Calendar-Graph
