@@ -7,22 +7,28 @@
           %h4 読み上げスピード:
           %select#speed-selector.target__top__speed__selector
             - (5..20).each do |s|
-              %option{:value=>s/10.to_f, :selected => s == 8}
+              %option{:value=>s/10.to_f, :selected => s == 10}
                 = s/10.to_f
       %textarea.target__textarea#target-text
+        I am not discouraged, because every wrong attempt discarded is another step forward.
       .target__fixed-text#fixed-text
-        I make lots of money. On weekdays, I recieve an average of 50 orders a day.
+        I am not discouraged, because every wrong attempt discarded is another step forward.
       .target__bottom
-        %button#edit-btn.btn
-          edit
-        %button#set-btn.btn
-          set
-        %button#speech-btn.btn
-          speech
+        .target__bottom__left
+          %button#edit-btn.btn
+            edit
+          %button#set-btn.btn
+            set
+          %button#refresh-btn.btn
+            refresh
+        .target__bottom__right
+          %i.fa.fa-play.fa-#speech-btn.icon
+          %i.fa.fa-stop.fa-#cancel-btn.icon
+            
     .recognized
       %h4 認識文
       .recognized__textarea#recognized-text
-        I make lot of money. On weekdays, I recieved an average of 50 orders a day.
+        I am not discouraged, because every wrong attempt discarded is another step forward.
       .recognized__bottom
         %button#rec-btn.btn
           rec

@@ -38,11 +38,13 @@
       font-size: 20px;
       height: 200;
       width: 840px;
+      border: 0;
       resize: none;
-      
       display: none;
     }
     &__fixed-text {
+      border: 1px s lightgrey;
+      margin-bottom: 5px;
       background-color: lightgrey;
       padding: 10px 20px;
       height: 200px;
@@ -50,10 +52,11 @@
       font-size: 20px;
       height: 200;
       width: 840px;
-      // display: none;
     }
     &__bottom {
       margin-top: 3px;
+      display: flex;
+      justify-content: space-between;
     }
   }
 
@@ -87,6 +90,25 @@
     border-right: 2px solid red;
     
     &:active {
+        background-color: lightslategray;
+        border-bottom: 2px solid black;
+        border-right: 2px solid black;
+      }
+      &:focus {
+        outline: 0;
+      }
+  }
+
+  .icon {
+    background-color: white;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    color: darkblue;
+    border-bottom: 2px solid red;
+    border-right: 2px solid red;
+      &:active {
         background-color: lightslategray;
         border-bottom: 2px solid black;
         border-right: 2px solid black;
