@@ -54,6 +54,7 @@ $(function () {
     $("#edit-btn").prop("disabled", false).css('background-color', 'white');
     $("#set-btn").prop("disabled", true).css('background-color', 'lightgrey');
     $("#refresh-btn").prop("disabled", false).css('background-color', 'white');
+    $("#speech-btn").prop("disabled", false).css('background-color', 'white');
     target_sentence = target_field.val();
     fixed_field.text(target_sentence);
     target_field.hide();
@@ -64,6 +65,7 @@ $(function () {
     $("#edit-btn").prop("disabled", true).css('background-color', 'lightgrey');
     $("#set-btn").prop("disabled", false).css('background-color', 'white');
     $("#refresh-btn").prop("disabled", true).css('background-color', 'lightgrey');
+    $("#speech-btn").prop("disabled", true).css('background-color', 'lightgrey');
     target_field.show();
     fixed_field.hide();
   })
