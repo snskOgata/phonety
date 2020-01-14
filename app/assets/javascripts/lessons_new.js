@@ -184,7 +184,7 @@ $(function () {
     var input = $('#word-input');
     if (words_list.indexOf(input.val()) < 0) {
       words_list.push(input.val());
-      input.val("");
+      input.val("").focus();
       showWords();
     }
     else {
@@ -200,4 +200,10 @@ $(function () {
       return false;
     }
   })
+
+  $("#word-input").keyup(function (event) {
+    if (event.keyCode === 13) {
+      $("#add-word-btn").click();
+    }
+  });
 });
