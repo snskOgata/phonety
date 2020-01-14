@@ -172,4 +172,11 @@ $(function () {
     words_list.splice(index, 1);
     showWords();
   })
+
+  $(document).on("click", "#play-word-btn", function () {
+    index = $(this).data('num');
+    speechSynthesis.cancel();
+    synthe.text = words_list[index];
+    speechSynthesis.speak(synthe);
+  })
 });
