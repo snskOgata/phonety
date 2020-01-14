@@ -46,10 +46,13 @@
           max-width: 50px;
           text-align: center;
           &:active {
-            background-color: lightslategray;
+            background-color: darkgrey;
           }
           &:focus {
             outline: 0;
+            background-color: lightslategray;
+          }
+          &:hover {
             background-color: lightslategray;
           }
         }
@@ -78,10 +81,13 @@
           }
 
           &:active {
-            background-color: lightslategray;
+            background-color: darkgrey;
           }
           &:focus {
             outline: 0;
+            background-color: lightslategray;
+          }
+          &:hover {
             background-color: lightslategray;
           }
         }
