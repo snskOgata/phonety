@@ -6,6 +6,12 @@ $(function () {
   recognition.interimResults = true;
   recognition.continuous = true;
 
+  // 単語用の音声認識エンジン
+  var wordRecognition = new SpeechRecognition();
+  wordRecognition.lang = 'en_US';
+  wordRecognition.interimResults = true;
+  wordRecognition.continuous = true;
+
   // 音声合成エンジンのセッティング
   var synthe = new SpeechSynthesisUtterance();
   synthe.lang = 'en-US';
@@ -183,9 +189,14 @@ $(function () {
   $('#add-word-btn').on('click', function () {
     var input = $('#word-input');
     if (words_list.indexOf(input.val()) < 0) {
-      words_list.push(input.val());
-      input.val("").focus();
-      showWords();
+      if (input.val() !== "") {
+        words_list.push(input.val());
+        input.val("").focus();
+        showWords();
+      }
+      else {
+        alert("文字を入力してください")
+      }
     }
     else {
       alert("既にリストに入っています")
@@ -201,9 +212,35 @@ $(function () {
     }
   })
 
+  // 単語追加フィールドでエンターを押すと追加
   $("#word-input").keyup(function (event) {
     if (event.keyCode === 13) {
       $("#add-word-btn").click();
     }
   });
+
+  $('#rec-word-btn').on('click', function () {
+    $('#word-input').val("")
+    wordRecognition.stop()
+    wordRecognition.onresult = function (e) {
+      var finalText = "";
+      var interimText = ""
+      for (var i = 0; i < e.results.length; i++) {
+        if (e.results[i].isFinal) {
+          finalText += e.results[i][0].transcript.toLowerCase();
+          interimText = "";
+        } else {
+          interimText += e.results[i][0].transcript.toLowerCase();
+        }
+      }
+      $('#word-input').val(finalText + interimText)
+    }
+    wordRecognition.start();
+    $(this).prop("disabled", true).css('background-color', 'lightgrey');
+  });
+  $('#stop-word-btn').on('click', function () {
+    wordRecognition.stop();
+    $("#rec-word-btn").prop("disabled", false).css('background-color', 'white');
+  });
+
 });
