@@ -11,6 +11,7 @@ $(function () {
   synthe.lang = 'en-US';
   synthe.rate = 1.0;
 
+  var words_list = []
 
   // テキストフィールド
   var target_field = $("#target-text");
@@ -38,7 +39,8 @@ $(function () {
       dataType: 'json'
     })
       .done(function (data) {
-        showResult(data.operation)
+        showResult(data.operation);
+        showWords();
       })
       .fail(function (e) {
         alert("エラーが発生しました\nページを更新してください")
@@ -120,6 +122,7 @@ $(function () {
     var target = "";
     var recognized = "";
     var correct_num = 0
+    var wrong_num = 0
     var ss; // 操作と単語を分離 e.g.)"+:Hello" -> "+", "Hello"
 
     $.each(operation, function (i, value) {
@@ -128,15 +131,36 @@ $(function () {
       if (ss[0] === "|") {
         target += "<span style=\"color:black\">" + ss[1] + " </span>";
         recognized += "<span style=\"color:black\">" + ss[1] + " </span>";
+        correct_num++;
       }
       else if (ss[0] === "-") {
         target += "<span style=\"color:red\">" + ss[1] + " </span>";
+        wrong_num++;
+        // ワードリストに入っていなければ追加
+        if (words_list.indexOf(ss[1]) < 0) {
+          words_list.push(ss[1])
+        }
       }
       else if (ss[0] === "+") {
         recognized += "<span style=\"color:red\">" + ss[1] + " </span>";
+        // ワードリストに入っていなければ追加
+        if (words_list.indexOf(ss[1]) < 0) {
+          words_list.push(ss[1])
+        }
       }
     })
     $("#fixed-text").text("").append(target);
     $("#recognized-text").text("").append(recognized);
+    $('#correctness').text(Math.round(correct_num / (correct_num + wrong_num) * 100) + "%");
+  }
+
+  function showWords() {
+    var tableHTML = ""
+    words_list.forEach(function (word) {
+      tableHTML += "<tr><td class=\"missed-word\">" + word + "</td>";
+      tableHTML += "<td><i class=\"fa fa-play icon word-icon\"></td>";
+      tableHTML += "<td><i class=\"fa fa-trash-alt icon word-icon\"></td></tr>";
+    })
+    $("#missed-words").html(tableHTML);
   }
 });

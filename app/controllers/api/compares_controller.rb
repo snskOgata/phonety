@@ -10,6 +10,6 @@ class Api::ComparesController < ApplicationController
 
   private 
     def slice_words(sentence)
-      sentence.gsub(/[^a-zA-Z0-9\'\$\%']/, " ").downcase.split(" ").compact.delete_if(&:empty?)
+      sentence.gsub(/[^a-zA-Z0-9\’\$\%']/, " ").downcase.split(" ").compact.delete_if(&:empty?)
     end
 end
