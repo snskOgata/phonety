@@ -190,6 +190,14 @@ $(function () {
     else {
       alert("既にリストに入っています")
     }
+  })
 
+  $('#remove-all-btn').on('click', function () {
+    if (confirm("単語練習をクリアします")) {
+      words_list = [];
+      showWords();
+    } else {
+      return false;
+    }
   })
 });

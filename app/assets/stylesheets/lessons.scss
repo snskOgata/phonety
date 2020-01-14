@@ -122,6 +122,16 @@
     .words-container {
       height: 100%;
       &__top {
+        display: flex;
+        justify-content: space-between;
+
+        #remove-all-btn {
+          color: red;
+          font-size: 14px;
+          border: 0;
+          background-color: inherit;
+          padding: 0;
+        }
       }
       &__mid {
         margin-top: 5px;
