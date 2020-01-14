@@ -174,9 +174,22 @@ $(function () {
   })
 
   $(document).on("click", "#play-word-btn", function () {
-    index = $(this).data('num');
+    var index = $(this).data('num');
     speechSynthesis.cancel();
     synthe.text = words_list[index];
     speechSynthesis.speak(synthe);
+  })
+
+  $('#add-word-btn').on('click', function () {
+    var input = $('#word-input');
+    if (words_list.indexOf(input.val()) < 0) {
+      words_list.push(input.val());
+      input.val("");
+      showWords();
+    }
+    else {
+      alert("既にリストに入っています")
+    }
+
   })
 });
