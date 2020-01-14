@@ -101,7 +101,7 @@ $(function () {
     recognition.stop();
   })
 
-  //　認識中の処理
+  // 認識中の処理
   recognition.onresult = function (e) {
     var finalText = "";
     var interimText = ""
@@ -154,13 +154,22 @@ $(function () {
     $('#correctness').text(Math.round(correct_num / (correct_num + wrong_num) * 100) + "%");
   }
 
+  // ワードリストに入った単語郡をテーブルに表示する
   function showWords() {
     var tableHTML = ""
-    words_list.forEach(function (word) {
-      tableHTML += "<tr><td class=\"missed-word\">" + word + "</td>";
-      tableHTML += "<td><i class=\"fa fa-play icon word-icon\"></td>";
-      tableHTML += "<td><i class=\"fa fa-trash-alt icon word-icon\"></td></tr>";
-    })
+    $.each(words_list,
+      function (index, word) {
+        tableHTML += "<tr><td class=\"missed-word\">" + word + "</td>";
+        tableHTML += "<td><i id=\"play-word-btn\" class=\"fa fa-play icon word-icon\" data-num=\"" + index + "\"></td>";
+        tableHTML += "<td><i id=\"delete-word-btn\" class=\"fa fa-trash-alt icon word-icon\" data-num=\"" + index + "\"></td></tr>";
+      })
     $("#missed-words").html(tableHTML);
   }
+
+  // 後から追加された要素は$("btn").onでは反応しないためこのような記述になる
+  $(document).on("click", "#delete-word-btn", function () {
+    index = $(this).data('num');
+    words_list.splice(index, 1);
+    showWords();
+  })
 });
