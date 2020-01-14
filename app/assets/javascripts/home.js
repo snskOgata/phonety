@@ -66,7 +66,7 @@ $(function () {
     $("#set-btn").prop("disabled", false).css('background-color', 'white');
     $("#refresh-btn").prop("disabled", true).css('background-color', 'lightgrey');
     $("#speech-btn").prop("disabled", true).css('background-color', 'lightgrey');
-    target_field.show();
+    target_field.show().focus();
     fixed_field.hide();
   })
 
@@ -114,10 +114,13 @@ $(function () {
     recognized_field.text(finalText + interimText)
   }
 
+
   // 比較結果の表示
   function showResult(operation) {
     var target = "";
     var recognized = "";
+    var correct_num = 0
+    var wrong_num = 0
     var ss; // 操作と単語を分離 e.g.)"+:Hello" -> "+", "Hello"
 
     $.each(operation, function (i, value) {
@@ -126,9 +129,11 @@ $(function () {
       if (ss[0] === "|") {
         target += "<span style=\"color:black\">" + ss[1] + " </span>";
         recognized += "<span style=\"color:black\">" + ss[1] + " </span>";
+        correct_num++;
       }
       else if (ss[0] === "-") {
         target += "<span style=\"color:red\">" + ss[1] + " </span>";
+        wrong_num++;
       }
       else if (ss[0] === "+") {
         recognized += "<span style=\"color:red\">" + ss[1] + " </span>";
@@ -136,5 +141,6 @@ $(function () {
     })
     $("#fixed-text").text("").append(target);
     $("#recognized-text").text("").append(recognized);
+    $('#correctness').text(Math.round(correct_num / (correct_num + wrong_num) * 100) + "%");
   }
 });
