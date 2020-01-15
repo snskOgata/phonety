@@ -34,6 +34,7 @@ $(function () {
   $("#edit-btn").prop("disabled", true).css('background-color', 'lightgrey');
   $("#refresh-btn").prop("disabled", true).css('background-color', 'lightgrey');
   $("#speech-btn").prop("disabled", true).css('background-color', 'lightgrey');
+  $("#compare-btn").prop("disabled", true).css('background-color', 'lightgrey');
   $("#next-btn").prop("disabled", true).css('background-color', 'lightgrey');
   $("#back-btn").prop("disabled", true).css('background-color', 'lightgrey');
   $("#save-btn").prop("disabled", true).css('background-color', 'lightgrey');
