@@ -66,7 +66,7 @@ $(function () {
     $("#set-btn").prop("disabled", false).css('background-color', 'white');
     $("#refresh-btn").prop("disabled", true).css('background-color', 'lightgrey');
     $("#speech-btn").prop("disabled", true).css('background-color', 'lightgrey');
-    target_field.show();
+    target_field.show().focus();
     fixed_field.hide();
   })
 
@@ -114,10 +114,12 @@ $(function () {
     recognized_field.text(finalText + interimText)
   }
 
+
   // 比較結果の表示
   function showResult(operation) {
     var target = "";
     var recognized = "";
+    var correct_num = 0
     var ss; // 操作と単語を分離 e.g.)"+:Hello" -> "+", "Hello"
 
     $.each(operation, function (i, value) {

@@ -1,0 +1,65 @@
+.new-lesson
+  .lesson-container
+    .lesson-container__left
+      .target
+        .target__top
+          %h4 ターゲット文
+          .target__top__speed
+            %h4 読み上げスピード:
+            %select#speed-selector.target__top__speed__selector
+              - (5..20).each do |s|
+                %option{:value=>s/10.to_f, :selected => s == 10}
+                  = s/10.to_f
+        %textarea.target__textarea#target-text
+        .target__fixed-text#fixed-text
+        .target__bottom
+          .target__bottom__left
+            %button#edit-btn.btn
+              edit
+            %button#set-btn.btn
+              set
+            %button#refresh-btn.btn
+              refresh
+          .target__bottom__right
+            %i.fa.fa-play.fa-#speech-btn.icon
+            %i.fa.fa-stop.fa-#cancel-btn.icon
+              
+      .recognized
+        %h4 認識文
+        .recognized__textarea#recognized-text
+        .recognized__bottom
+          .recognized__bottom__left
+            %button#rec-btn.btn
+              rec
+            %button#stop-btn.btn
+              stop
+            %button#compare-btn.btn
+              compare
+          .recognized__bottom__right
+            正答率：
+            .correctness#correctness
+              0%
+      .controller
+        %button#save-btn.btn
+          save
+        %button#back-btn.btn
+          %i.fa.fa-backward.fa-
+        %button#next-btn.btn
+          %i.fa.fa-forward.fa-
+        %button#new-btn.btn
+          new
+    .lesson-container__right
+      .words-container
+        .words-container__top
+          %h4 単語練習
+          %button#remove-all-btn
+            remove all
+        .words-container__mid
+          %table.words-table
+            %tbody#missed-words
+        .words-container__bot
+          %input.word-input#word-input(type="text"){placeholder: "add word"}
+          %i.fa.fa-microphone.fa-#rec-word-btn.icon.word-icon
+          %i.fa.fa-pause.fa-#stop-word-btn.icon.word-icon
+          %i.fa.fa-plus.fa-#add-word-btn.icon.word-icon
+= javascript_include_tag "lessons_new.js"
