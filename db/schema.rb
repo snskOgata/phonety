@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_13_031508) do
+ActiveRecord::Schema.define(version: 2020_01_15_031527) do
+
+  create_table "lessons", force: :cascade do |t|
+    t.integer "use_id"
+    t.text "content", null: false
+    t.integer "correctness", default: 0
+    t.boolean "done", default: false, null: false
+    t.date "done_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["content"], name: "index_lessons_on_content"
+    t.index ["use_id"], name: "index_lessons_on_use_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
