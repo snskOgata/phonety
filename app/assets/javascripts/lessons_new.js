@@ -19,7 +19,7 @@ $(function () {
 
   // 各種初期値
   var target_list = [];
-  var current_num = -1;
+  var current_num = 0;
   var words_list = [];
   var correctness = 0;
   var correctness_list = []
@@ -331,17 +331,20 @@ $(function () {
     $('#correctness').text(correctness_list[current_num] + "%")
   }
   function redisplay_nextback() {
-    console.log("num" + current_num)
-    console.log("len" + target_list.length)
+    // backボタンのオンオフ
     if (current_num > 0) {
       $("#back-btn").prop("disabled", false).css('background-color', 'white');
+    } else {
+      $("#back-btn").prop("disabled", true).css('background-color', 'lightgrey');
+    }
+
+    // nextボタンのオンオフ
+    if (current_num > -1) {
       if (current_num < (target_list.length - 1)) {
         $("#next-btn").prop("disabled", false).css('background-color', 'white');
       } else {
         $("#next-btn").prop("disabled", true).css('background-color', 'lightgrey');
       }
-    } else {
-      $("#back-btn").prop("disabled", true).css('background-color', 'lightgrey');
     }
   }
 });
