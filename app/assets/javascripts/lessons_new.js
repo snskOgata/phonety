@@ -25,10 +25,13 @@ $(function () {
   var recognized_field = $("#recognized-text");
 
   // ボタンの初期設定
-  $("#compare-btn").prop("disabled", true).css('background-color', 'lightgrey');
+  // $("#compare-btn").prop("disabled", true).css('background-color', 'lightgrey');
   $("#edit-btn").prop("disabled", true).css('background-color', 'lightgrey');
   $("#refresh-btn").prop("disabled", true).css('background-color', 'lightgrey');
-  $("#stop-btn").prop("disabled", true).css('background-color', 'lightgrey');
+  $("#speech-btn").prop("disabled", true).css('background-color', 'lightgrey');
+  $("#next-btn").prop("disabled", true).css('background-color', 'lightgrey');
+  $("#back-btn").prop("disabled", true).css('background-color', 'lightgrey');
+  $("#save-btn").prop("disabled", true).css('background-color', 'lightgrey');
 
   // 初期値設定
   var target_sentence = "";
@@ -51,6 +54,7 @@ $(function () {
       .done(function (data) {
         showResult(data.operation);
         showWords();
+        $("#save-btn").prop("disabled", false).css('background-color', 'white');
       })
       .fail(function (e) {
         alert("エラーが発生しました\nページを更新してください")

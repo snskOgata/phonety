@@ -5,7 +5,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.references :lesson, foreign_key: true
       t.date :date, null: false
       t.integer :count, null: false
-      t.integer :correctness, :default: 0
+      t.integer :correctness, default: 0
       t.boolean :done, default: false, null: false
       t.date :done_date 
       t.timestamps
