@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   end
   namespace :api do
     resources :compares, only: :create
+    resources :lessons, only: :create
   end
 end

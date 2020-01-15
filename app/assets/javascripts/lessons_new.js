@@ -17,7 +17,9 @@ $(function () {
   synthe.lang = 'en-US';
   synthe.rate = 1.0;
 
-  var words_list = []
+  // 各種初期値
+  var words_list = [];
+  var correctness = 0;
 
   // テキストフィールド
   var target_field = $("#target-text");
@@ -59,6 +61,27 @@ $(function () {
       .fail(function (e) {
         alert("エラーが発生しました\nページを更新してください")
       })
+  })
+
+  // saveボタンを押すと、学習データを保存
+  $('#save-btn').on('click', function () {
+    $.ajax({
+      url: "/api/lessons",
+      type: "POST",
+      data: {
+        content: target_sentence,
+        correctness: correctness
+      },
+      dataType: 'json'
+    })
+    // .done(function (data) {
+    //   showResult(data.operation);
+    //   showWords();
+    //   $("#save-btn").prop("disabled", false).css('background-color', 'white');
+    // })
+    // .fail(function (e) {
+    //   alert("エラーが発生しました\nページを更新してください")
+    // })
   })
 
   $("#speed-selector").change(function () {
@@ -165,7 +188,8 @@ $(function () {
     })
     $("#fixed-text").text("").append(target);
     $("#recognized-text").text("").append(recognized);
-    $('#correctness').text(Math.round(correct_num / (correct_num + wrong_num) * 100) + "%");
+    correctness = Math.round(correct_num / (correct_num + wrong_num) * 100)
+    $('#correctness').text(correctness + "%");
   }
 
   // ワードリストに入った単語郡をテーブルに表示する
