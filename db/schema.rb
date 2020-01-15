@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_01_15_050410) do
 
   create_table "lessons", force: :cascade do |t|
-    t.integer "use_id"
+    t.integer "user_id"
     t.text "content", null: false
     t.integer "correctness", default: 0
     t.boolean "done", default: false, null: false
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2020_01_15_050410) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["content"], name: "index_lessons_on_content"
-    t.index ["use_id"], name: "index_lessons_on_use_id"
+    t.index ["user_id"], name: "index_lessons_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|

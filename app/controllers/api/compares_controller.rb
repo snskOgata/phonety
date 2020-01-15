@@ -5,7 +5,6 @@ class Api::ComparesController < ApplicationController
     recognized = slice_words(params[:recognized])
 
     @operation = LevenShtein.getOperation(target, recognized)
-    puts @operation
   end
 
   private 
