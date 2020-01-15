@@ -39,7 +39,6 @@
         width: 800px;
         border: 1px solid black;
         resize: none;
-        display: none;
       }
       &__fixed-text {
         border: 1px solid black;
@@ -51,6 +50,7 @@
         font-size: 16px;
         height: 200;
         width: 800px;
+        display: none;
       }
       &__bottom {
         margin-top: 3px;

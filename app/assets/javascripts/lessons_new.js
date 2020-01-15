@@ -26,10 +26,14 @@ $(function () {
 
   // ボタンの初期設定
   $("#compare-btn").prop("disabled", true).css('background-color', 'lightgrey');
-  $("#set-btn").prop("disabled", true).css('background-color', 'lightgrey');
+  $("#edit-btn").prop("disabled", true).css('background-color', 'lightgrey');
+  $("#refresh-btn").prop("disabled", true).css('background-color', 'lightgrey');
   $("#stop-btn").prop("disabled", true).css('background-color', 'lightgrey');
 
-  var target_sentence = fixed_field.text();
+  // 初期値設定
+  var target_sentence = "";
+  target_field.focus();
+
 
   // compareボタンを押すと非同期通信で比較
   $('#compare-btn').on('click', function () {
