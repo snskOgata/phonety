@@ -18,8 +18,11 @@ $(function () {
   synthe.rate = 1.0;
 
   // 各種初期値
+  var target_list = [];
+  var current_num = -1;
   var words_list = [];
   var correctness = 0;
+  var correctness_list = []
 
   // テキストフィールド
   var target_field = $("#target-text");
@@ -36,7 +39,7 @@ $(function () {
   $("#save-btn").prop("disabled", true).css('background-color', 'lightgrey');
 
   // 初期値設定
-  var target_sentence = "";
+  var target_sentence = target_field.val();
   target_field.focus();
 
 
@@ -74,14 +77,61 @@ $(function () {
       },
       dataType: 'json'
     })
-    // .done(function (data) {
-    //   showResult(data.operation);
-    //   showWords();
-    //   $("#save-btn").prop("disabled", false).css('background-color', 'white');
-    // })
-    // .fail(function (e) {
-    //   alert("エラーが発生しました\nページを更新してください")
-    // })
+      .done(function () {
+        var index = target_list.indexOf(target_sentence)
+        // リストに含まれなければ追加
+        if (index < 0) {
+          target_list.push(target_sentence);
+          correctness_list.push(correctness);
+          current_num = target_list.length - 1
+        }
+        // リストに含まれる場合は精度を修正
+        else {
+          correctness_list[index] = correctness
+          // 該当のセンテンスの場所に移動
+          current_num = index
+        }
+        $("#save-btn").prop("disabled", true).css('background-color', 'lightgrey');
+      })
+      .fail(function (e) {
+        alert("エラーが発生しました\nページを更新してください")
+      })
+  })
+
+  $('#new-btn').on('click', function () {
+    // 最新の番号を取得
+    current_num = target_list.length
+    // 各種状態をリセット
+    $("#edit-btn").prop("disabled", true).css('background-color', 'lightgrey');
+    $("#set-btn").prop("disabled", false).css('background-color', 'white');
+    $("#refresh-btn").prop("disabled", true).css('background-color', 'lightgrey');
+    target_field.val("").show().focus();
+    fixed_field.val("").hide();
+    recognized_field.text("");
+
+    // next/backボタンの更新
+    $("#correctness").text("0%")
+    if (current_num > 0) {
+      $("#back-btn").prop("disabled", false).css('background-color', 'white');
+    }
+    $("#next-btn").prop("disabled", true).css('background-color', 'lightgrey');
+  });
+
+  $('#back-btn').on('click', function () {
+    current_num--;
+    redisplay_sentence();
+    redisplay_nextback();
+    recognized_field.text("");
+    $("#save-btn").prop("disabled", true).css('background-color', 'lightgrey');
+  })
+
+  $('#next-btn').on('click', function () {
+    current_num++;
+    redisplay_sentence();
+    redisplay_nextback();
+    recognized_field.text("");
+    $("#save-btn").prop("disabled", true).css('background-color', 'lightgrey');
+    $("#compare-btn").prop("disabled", false).css('background-color', 'white');
   })
 
   $("#speed-selector").change(function () {
@@ -126,7 +176,7 @@ $(function () {
   $('#rec-btn').on('click', function () {
     $("#rec-btn").prop("disabled", true).css('background-color', 'lightgrey');
     $("#stop-btn").prop("disabled", false).css('background-color', 'white');
-    recognized_field.text("");
+    recognized_field.val("");
     finalTranscript = "";
     recognition.start();
   })
@@ -275,4 +325,23 @@ $(function () {
     $("#rec-word-btn").prop("disabled", false).css('background-color', 'white');
   });
 
+  function redisplay_sentence() {
+    target_field.val(target_list[current_num]);
+    fixed_field.val(target_list[current_num]);
+    $('#correctness').text(correctness_list[current_num] + "%")
+  }
+  function redisplay_nextback() {
+    console.log("num" + current_num)
+    console.log("len" + target_list.length)
+    if (current_num > 0) {
+      $("#back-btn").prop("disabled", false).css('background-color', 'white');
+      if (current_num < (target_list.length - 1)) {
+        $("#next-btn").prop("disabled", false).css('background-color', 'white');
+      } else {
+        $("#next-btn").prop("disabled", true).css('background-color', 'lightgrey');
+      }
+    } else {
+      $("#back-btn").prop("disabled", true).css('background-color', 'lightgrey');
+    }
+  }
 });
