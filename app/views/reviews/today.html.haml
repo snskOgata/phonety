@@ -3,12 +3,12 @@
 - if @reviews.empty?
   %h2 今日の復習はありません
 - else
-  = link_to "復習を開始する", "#"
+  = link_to "復習を開始する", user_reviewing_path
   %hr/
   - @reviews.each_with_index do |review, i|
     %ul
       %li
-        = "復習回数：#{review.count}　学習日：#{review.lesson.created_at.strftime('%Y/%m/%d')}"
+        = "復習：#{review.count}回目　学習日：#{review.lesson.created_at.strftime('%Y/%m/%d')}"
       %li
         = "内容: #{review.lesson.content}"
     %hr/

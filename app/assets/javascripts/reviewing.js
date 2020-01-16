@@ -1,4 +1,5 @@
 $(function () {
+
   // 音声認識エンジンのセッティング
   SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
   var recognition = new SpeechRecognition();
@@ -24,24 +25,38 @@ $(function () {
   var correctness = 0;
   var correctness_list = []
 
+  var review_ids = []
+  var lesson_ids = []
+
   // テキストフィールド
   var target_field = $("#target-text");
   var fixed_field = $("#fixed-text");
+  target_field.hide();
+  fixed_field.show();
+  fixed_field.css('background-color', 'white');
   var recognized_field = $("#recognized-text");
 
   // ボタンの初期設定
-  // $("#compare-btn").prop("disabled", true).css('background-color', 'lightgrey');
-  $("#edit-btn").prop("disabled", true).css('background-color', 'lightgrey');
   $("#refresh-btn").prop("disabled", true).css('background-color', 'lightgrey');
-  $("#speech-btn").prop("disabled", true).css('background-color', 'lightgrey');
   $("#compare-btn").prop("disabled", true).css('background-color', 'lightgrey');
-  $("#next-btn").prop("disabled", true).css('background-color', 'lightgrey');
   $("#back-btn").prop("disabled", true).css('background-color', 'lightgrey');
-  $("#save-btn").prop("disabled", true).css('background-color', 'lightgrey');
 
-  // 初期値設定
-  var target_sentence = target_field.val();
-  target_field.focus();
+  var target_sentence = ""
+
+  // ページ読み込み後に復習リストを取得
+  $.get("/api/reviews/get_list_today",
+    function (reviews) {
+      $.each(reviews, function (i, review) {
+        target_list.push(review.content);
+        correctness_list.push(review.correctness);
+        review_ids.push(review.review_id);
+        lesson_ids.push(review.lesson_id);
+      });
+
+      target_sentence = target_list[0]
+      target_field.val(target_sentence)
+      fixed_field.text(target_sentence)
+    });
 
 
   // compareボタンを押すと非同期通信で比較
@@ -99,32 +114,32 @@ $(function () {
       })
   })
 
-  $('#new-btn').on('click', function () {
-    // 最新の番号を取得
-    current_num = target_list.length
-    // 各種状態をリセット
-    $("#edit-btn").prop("disabled", true).css('background-color', 'lightgrey');
-    $("#set-btn").prop("disabled", false).css('background-color', 'white');
-    $("#refresh-btn").prop("disabled", true).css('background-color', 'lightgrey');
-    target_field.val("").show().focus();
-    fixed_field.val("").hide();
-    recognized_field.text("");
+  $('#done-btn').on('click', function () {
+    $("#done-btn").prop("disabled", true).css('background-color', 'lightgrey');
 
-    // next/backボタンの更新
-    $("#correctness").text("0%")
-    if (current_num > 0) {
-      $("#back-btn").prop("disabled", false).css('background-color', 'white');
-    }
-    $("#next-btn").prop("disabled", true).css('background-color', 'lightgrey');
-  });
+    $.ajax({
+      url: "/api/reviews/done",
+      type: "PATCH",
+      data: {
+        review_id: review_ids[current_num],
+        lesson_id: lesson_ids[current_num],
+        correctness: correctness_list[current_num]
+      },
+      dataType: 'json'
+    })
+      .done(function (data) {
+      })
+      .fail(function (e) {
+        alert("エラーが発生しました\nページを更新してください")
+      })
+  })
 
   $('#back-btn').on('click', function () {
     current_num--;
     redisplay_sentence();
     redisplay_nextback();
     recognized_field.text("");
-    $("#save-btn").prop("disabled", true).css('background-color', 'lightgrey');
-    $("#compare-btn").prop("disabled", false).css('background-color', 'lightgrey');
+    $("#compare-btn").prop("disabled", true).css('background-color', 'lightgrey');
   })
 
   $('#next-btn').on('click', function () {
@@ -132,38 +147,16 @@ $(function () {
     redisplay_sentence();
     redisplay_nextback();
     recognized_field.text("");
-    $("#save-btn").prop("disabled", true).css('background-color', 'lightgrey');
-    $("#compare-btn").prop("disabled", false).css('background-color', 'lightgrey');
+    $("#compare-btn").prop("disabled", true).css('background-color', 'lightgrey');
   })
 
   $("#speed-selector").change(function () {
     synthe.rate = $(this).val();
   });
 
-  // セットボタンを押すと、値を渡して固定フィールドに切り替える
-  $('#set-btn').on('click', function () {
-    $("#edit-btn").prop("disabled", false).css('background-color', 'white');
-    $("#set-btn").prop("disabled", true).css('background-color', 'lightgrey');
-    $("#refresh-btn").prop("disabled", false).css('background-color', 'white');
-    $("#speech-btn").prop("disabled", false).css('background-color', 'white');
-    target_sentence = target_field.val();
-    fixed_field.text(target_sentence);
-    target_field.hide();
-    fixed_field.show();
-  })
-
-  $('#edit-btn').on('click', function () {
-    $("#edit-btn").prop("disabled", true).css('background-color', 'lightgrey');
-    $("#set-btn").prop("disabled", false).css('background-color', 'white');
-    $("#refresh-btn").prop("disabled", true).css('background-color', 'lightgrey');
-    $("#speech-btn").prop("disabled", true).css('background-color', 'lightgrey');
-    target_field.show().focus();
-    fixed_field.hide();
-  })
-
   $('#speech-btn').on('click', function () {
     speechSynthesis.cancel();
-    synthe.text = target_sentence;
+    synthe.text = target_list[current_num];
     speechSynthesis.speak(synthe);
   })
 
@@ -241,6 +234,7 @@ $(function () {
     $("#fixed-text").text("").append(target);
     $("#recognized-text").text("").append(recognized);
     correctness = Math.round(correct_num / (correct_num + wrong_num) * 100)
+    correctness_list[current_num] = correctness
     $('#correctness').text(correctness + "%");
   }
 
@@ -262,7 +256,6 @@ $(function () {
     words_list.splice(index, 1);
     showWords();
   })
-
   $(document).on("click", "#play-word-btn", function () {
     var index = $(this).data('num');
     speechSynthesis.cancel();
@@ -322,16 +315,19 @@ $(function () {
     wordRecognition.start();
     $(this).prop("disabled", true).css('background-color', 'lightgrey');
   });
+
   $('#stop-word-btn').on('click', function () {
     wordRecognition.stop();
     $("#rec-word-btn").prop("disabled", false).css('background-color', 'white');
   });
 
+  // ターゲット文の再描画
   function redisplay_sentence() {
     target_field.val(target_list[current_num]);
-    fixed_field.val(target_list[current_num]);
+    fixed_field.text(target_list[current_num]);
     $('#correctness').text(correctness_list[current_num] + "%")
   }
+
   function redisplay_nextback() {
     // backボタンのオンオフ
     if (current_num > 0) {

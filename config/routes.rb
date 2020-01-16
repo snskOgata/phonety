@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :users, only: :show do
     patch 'update_goal', to: 'users#update_goal'
     get :review, to: "reviews#today"
+    get :reviewing, to: "reviews#reviewing"
+    get :reviewed_today, to: "reviews#reviewed_today"
     resources :lessons, only: [:index, :new, :destroy] do
       get :today, on: :collection
     end
@@ -13,5 +15,10 @@ Rails.application.routes.draw do
   namespace :api do
     resources :compares, only: :create
     resources :lessons, only: :create
+
+    scope :reviews do 
+      get :get_list_today, to: "reviews#get_list_today", defaults: { format: 'json' }
+      patch 'done', to: "reviews#done"
+    end
   end
 end
