@@ -37,7 +37,6 @@ $(function () {
   var recognized_field = $("#recognized-text");
 
   // ボタンの初期設定
-  // $("#compare-btn").prop("disabled", true).css('background-color', 'lightgrey');
   $("#refresh-btn").prop("disabled", true).css('background-color', 'lightgrey');
   $("#compare-btn").prop("disabled", true).css('background-color', 'lightgrey');
   $("#back-btn").prop("disabled", true).css('background-color', 'lightgrey');
@@ -215,6 +214,7 @@ $(function () {
     $("#fixed-text").text("").append(target);
     $("#recognized-text").text("").append(recognized);
     correctness = Math.round(correct_num / (correct_num + wrong_num) * 100)
+    correctness_list[current_num] = correctness
     $('#correctness').text(correctness + "%");
   }
 
