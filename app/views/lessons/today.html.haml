@@ -1,1 +1,10 @@
-%h1 Hello world
+- if @lessons.empty?
+  %h1 まだ今日の学習はありません
+- else
+  - @lessons.each_with_index do |lesson, index|
+    %ul
+      = index
+      %li
+        = "内容：#{lesson.content}"
+      %li
+        = "精度：#{lesson.correctness}%"
