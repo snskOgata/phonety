@@ -25,7 +25,12 @@
             %i.fa.fa-stop.fa-#cancel-btn.icon
               
       .recognized
-        %h4 認識文
+        .recognized__top
+          %h4 認識文
+          .recognized__top__right
+            正答率：
+            .correctness#correctness
+              0%
         .recognized__textarea#recognized-text
         .recognized__bottom
           .recognized__bottom__left
@@ -36,9 +41,8 @@
             %button#compare-btn.btn
               compare
           .recognized__bottom__right
-            正答率：
-            .correctness#correctness
-              0%
+            %button#done-btn.btn
+              完了
     .lesson-container__right
       .words-container
         .words-container__top

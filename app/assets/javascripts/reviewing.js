@@ -31,12 +31,14 @@ $(function () {
   // テキストフィールド
   var target_field = $("#target-text");
   var fixed_field = $("#fixed-text");
+  target_field.hide();
+  fixed_field.show();
+  fixed_field.css('background-color', 'white');
   var recognized_field = $("#recognized-text");
 
   // ボタンの初期設定
   // $("#compare-btn").prop("disabled", true).css('background-color', 'lightgrey');
   $("#refresh-btn").prop("disabled", true).css('background-color', 'lightgrey');
-  $("#speech-btn").prop("disabled", true).css('background-color', 'lightgrey');
   $("#compare-btn").prop("disabled", true).css('background-color', 'lightgrey');
   $("#back-btn").prop("disabled", true).css('background-color', 'lightgrey');
 
@@ -54,7 +56,7 @@ $(function () {
 
       target_sentence = target_list[0]
       target_field.val(target_sentence)
-      fixed_field.val(target_sentence)
+      fixed_field.text(target_sentence)
     });
 
 
@@ -117,6 +119,7 @@ $(function () {
     current_num--;
     redisplay_sentence();
     redisplay_nextback();
+    recognized_field.text("");
     $("#compare-btn").prop("disabled", true).css('background-color', 'lightgrey');
   })
 
@@ -134,7 +137,7 @@ $(function () {
 
   $('#speech-btn').on('click', function () {
     speechSynthesis.cancel();
-    synthe.text = target_sentence;
+    synthe.text = target_list[current_num];
     speechSynthesis.speak(synthe);
   })
 
@@ -301,7 +304,7 @@ $(function () {
   // ターゲット文の再描画
   function redisplay_sentence() {
     target_field.val(target_list[current_num]);
-    fixed_field.val(target_list[current_num]);
+    fixed_field.text(target_list[current_num]);
     $('#correctness').text(correctness_list[current_num] + "%")
   }
 

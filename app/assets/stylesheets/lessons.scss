@@ -61,6 +61,14 @@
 
     .recognized {
       margin-top: 30px;
+      &__top {
+        display: flex;
+        justify-content: space-between;
+        &__right {
+          display: flex;
+          justify-content: right;
+        }
+      }
       &__textarea {
         margin-top: 5px;
         padding: 10px 20px;
@@ -120,7 +128,7 @@
     position: relative;
     
     .words-container {
-      height: 100%;
+      height: 500px;
       &__top {
         display: flex;
         justify-content: space-between;
@@ -135,6 +143,8 @@
       }
       &__mid {
         margin-top: 5px;
+        height: 430px;
+        overflow-y: scroll;
       }
       &__bot {
         position: absolute;
