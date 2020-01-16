@@ -124,6 +124,7 @@ $(function () {
     redisplay_nextback();
     recognized_field.text("");
     $("#save-btn").prop("disabled", true).css('background-color', 'lightgrey');
+    $("#compare-btn").prop("disabled", false).css('background-color', 'lightgrey');
   })
 
   $('#next-btn').on('click', function () {
@@ -132,7 +133,7 @@ $(function () {
     redisplay_nextback();
     recognized_field.text("");
     $("#save-btn").prop("disabled", true).css('background-color', 'lightgrey');
-    $("#compare-btn").prop("disabled", false).css('background-color', 'white');
+    $("#compare-btn").prop("disabled", false).css('background-color', 'lightgrey');
   })
 
   $("#speed-selector").change(function () {
