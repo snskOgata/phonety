@@ -1,10 +1,10 @@
+%h1 今日やる復習
+%hr/
 - if @reviews.empty?
-  %h1 今日の復習はありません
+  %h2 今日の復習はありません
 - else
   = link_to "復習を開始する", "#"
-  %br/
-  %br/
-  %br/
+  %hr/
   - @reviews.each_with_index do |review, i|
     %ul
       %li

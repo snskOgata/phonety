@@ -1,9 +1,11 @@
+%h1 今日学習したもの
+%hr/
 - if @lessons.empty?
-  %h1 まだ今日の学習はありません
+  %h2 まだ今日の学習はありません
 - else
   - @lessons.each_with_index do |lesson, index|
     %ul
-      = index
+      = "No.#{index}"
       %li
         = "内容：#{lesson.content}"
       %li

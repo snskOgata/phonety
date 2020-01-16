@@ -1,9 +1,11 @@
+%h1 学習一覧
+%hr/
 - if @lessons.empty?
   %h1 まだ学習はありません
 - else
   - @lessons.each_with_index do |lesson, index|
     %ul
-      = index
+      = "No.#{index}"
       %li
         = "日付：#{lesson.created_at.strftime('%Y/%m/%d')}"
       %li
@@ -11,3 +13,4 @@
       %li
         = "精度：#{lesson.correctness}%"
       = link_to "削除","/users/#{current_user.id}/lessons/#{lesson.id}", method: :delete, data: {confirm: "削除しますか？"}
+    %hr/
