@@ -1,4 +1,4 @@
-.new-lesson
+.reviewing
   .lesson-container
     .lesson-container__left
       .target
@@ -14,12 +14,12 @@
         .target__fixed-text#fixed-text
         .target__bottom
           .target__bottom__left
-            %button#edit-btn.btn
-              edit
-            %button#set-btn.btn
-              set
             %button#refresh-btn.btn
               refresh
+            %button#back-btn.btn
+              %i.fa.fa-backward.fa-
+            %button#next-btn.btn
+              %i.fa.fa-forward.fa-
           .target__bottom__right
             %i.fa.fa-play.fa-#speech-btn.icon
             %i.fa.fa-stop.fa-#cancel-btn.icon
@@ -39,15 +39,6 @@
             正答率：
             .correctness#correctness
               0%
-      .controller
-        %button#save-btn.btn
-          save
-        %button#back-btn.btn
-          %i.fa.fa-backward.fa-
-        %button#next-btn.btn
-          %i.fa.fa-forward.fa-
-        %button#new-btn.btn
-          new
     .lesson-container__right
       .words-container
         .words-container__top
@@ -62,4 +53,4 @@
           %i.fa.fa-microphone.fa-#rec-word-btn.icon.word-icon
           %i.fa.fa-pause.fa-#stop-word-btn.icon.word-icon
           %i.fa.fa-plus.fa-#add-word-btn.icon.word-icon
-= javascript_include_tag "lessons_new.js"
+= javascript_include_tag "reviewing.js"
