@@ -15,11 +15,11 @@
   .right-container
     .right-container__upper
       .contents
-        = link_to "今日やる復習", "#" , class: "content"
+        = link_to "今日やる復習", user_review_path(user_id: current_user.id) , class: "content"
         = link_to "新しく学習を始める", new_user_lesson_path(user_id: current_user.id) , class: "content content__even"
         %hr/
-        = link_to "今日新しく学んだこと", "#" , class: "content content"
-        = link_to "学習一覧", "#" , class: "content content__even"
+        = link_to "今日新しく学んだこと", today_user_lessons_path(user_id: current_user.id) , class: "content content"
+        = link_to "学習一覧", user_lessons_path(user_id: current_user.id) , class: "content content__even"
     %hr/
     .right-container__lower
       .progress

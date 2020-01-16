@@ -1,0 +1,13 @@
+%h1 今日学習したもの
+%hr/
+- if @lessons.empty?
+  %h2 まだ今日の学習はありません
+- else
+  - @lessons.each_with_index do |lesson, index|
+    %ul
+      = "No.#{index}"
+      %li
+        = "内容：#{lesson.content}"
+      %li
+        = "精度：#{lesson.correctness}%"
+      = link_to "削除","/users/#{current_user.id}/lessons/#{lesson.id}", method: :delete, data: {confirm: "削除しますか？"}
