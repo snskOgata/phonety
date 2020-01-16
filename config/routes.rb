@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: :show do
     patch 'update_goal', to: 'users#update_goal'
     get :review, to: "reviews#today"
+    get :reviewing, to: "reviews#reviewing"
     resources :lessons, only: [:index, :new, :destroy] do
       get :today, on: :collection
     end

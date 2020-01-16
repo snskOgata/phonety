@@ -3,7 +3,7 @@
 - if @reviews.empty?
   %h2 今日の復習はありません
 - else
-  = link_to "復習を開始する", "#"
+  = link_to "復習を開始する", user_reviewing_path
   %hr/
   - @reviews.each_with_index do |review, i|
     %ul
