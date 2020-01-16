@@ -8,3 +8,4 @@
         = "内容：#{lesson.content}"
       %li
         = "精度：#{lesson.correctness}%"
+      = link_to "削除","/users/#{current_user.id}/lessons/#{lesson.id}", method: :delete, data: {confirm: "削除しますか？"}

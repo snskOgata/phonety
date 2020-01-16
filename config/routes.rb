@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   resources :users, only: :show do
     patch 'update_goal', to: 'users#update_goal'
-    resources :lessons, only: :new do
+    resources :lessons, only: [:new, :destroy] do
       get :today, on: :collection
     end
   end
