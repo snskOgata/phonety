@@ -5,9 +5,14 @@ class Api::ReviewsController < ApplicationController
   end
 
   def done
-    puts
-    puts "Done!!!"
-    puts
+    review = Review.find(params[:review_id])
+    lesson = Lesson.find(params[:lesson_id])
+    review.update(correctness: params[:correctness], done: true, done_date: Date.today)
+    if review.count == 6
+      lesson.update(correctness: params[:correctness], done: true, done_date: Date.today)
+    else
+      lesson.update(correctness: params[:correctness])
+    end
   end
 
 end
