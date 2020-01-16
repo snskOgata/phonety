@@ -114,6 +114,26 @@ $(function () {
       })
   })
 
+  $('#done-btn').on('click', function () {
+    $("#done-btn").prop("disabled", true).css('background-color', 'lightgrey');
+
+    $.ajax({
+      url: "/api/reviews/done",
+      type: "PATCH",
+      data: {
+        review_id: review_ids[current_num],
+        lesson_id: lesson_ids[current_num],
+        correctness: correctness_list[current_num]
+      },
+      dataType: 'json'
+    })
+      .done(function (data) {
+      })
+      .fail(function (e) {
+        alert("エラーが発生しました\nページを更新してください")
+      })
+  })
+
   $('#back-btn').on('click', function () {
     current_num--;
     redisplay_sentence();

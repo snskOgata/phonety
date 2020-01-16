@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
     scope :reviews do 
       get :get_list_today, to: "reviews#get_list_today", defaults: { format: 'json' }
+      patch 'done', to: "reviews#done"
     end
   end
 end
