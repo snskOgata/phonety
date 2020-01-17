@@ -8,13 +8,13 @@ $(function () {
   cal.init({
     itemSelector: "#heatmap",
     data: {
-      "1579186800": 5,
-      "1579100400": 10,
+      "1579186800": 25,
+      "1579100400": 20,
       "1579014000": 15,
-      "1578927600": 20,
-      "1578841200": 30,
+      "1578927600": 10,
+      "1578841200": 5,
     },
-    cellSize: 12,
+    cellSize: 14,
     domain: "month",
     subDomain: "day",
     range: 12,
@@ -24,7 +24,7 @@ $(function () {
     legend: [5, 10, 15, 20],
     domainLabelFormat: "%b",
     weekStartOnMonday: false,
-    legendCellSize: 12,
+    legendCellSize: 14,
     legendColors: {
       min: "#efefef",
       max: "green",
