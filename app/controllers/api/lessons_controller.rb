@@ -28,7 +28,9 @@ class Api::LessonsController < ApplicationController
           record.save
         end
       end
-      
+      # ユーザの学習カウントを追加
+      User.find_by(id: current_user.id).update(study_count: (current_user.count))
+
     else
       flash.now("保存に失敗しました")
     end
