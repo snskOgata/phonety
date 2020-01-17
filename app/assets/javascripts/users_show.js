@@ -8,11 +8,11 @@ $(function () {
   cal.init({
     itemSelector: "#heatmap",
     data: {
-      "1579186800": 2,
-      "1579100400": 8,
-      "1579014000": 5,
-      "1578927600": 10,
-      "1578841200": 25,
+      "1579186800": 5,
+      "1579100400": 10,
+      "1579014000": 15,
+      "1578927600": 20,
+      "1578841200": 30,
     },
     cellSize: 12,
     domain: "month",
@@ -29,8 +29,9 @@ $(function () {
       min: "#efefef",
       max: "green",
       empty: "white",
-      overflow: "darkgreen"
-    }
+
+    },
+    highlight: "now",
   });
 
   $('#goal-update-btn').hide();
