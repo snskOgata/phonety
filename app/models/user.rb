@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :name, presence: true, length: {maximum: 20}
   has_many :lessons, dependent: :destroy
   has_many :reviews
+  has_one :study_record
 end
