@@ -29,7 +29,7 @@
           .progress__header__left
             進捗表
           .progress__header__right
-            総学習数：200
+            = "総学習数：#{current_user.study_count}"
         .progress__container#heatmap
 = javascript_include_tag "users_show.js"
 = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js'
