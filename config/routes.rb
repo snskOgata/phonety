@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     resources :compares, only: :create
     resources :lessons, only: :create
 
+    scope :users do
+      get :get_study_records, to: "users#get_study_records", defaults: { format: 'json' }
+    end
+
     scope :reviews do 
       get :get_list_today, to: "reviews#get_list_today", defaults: { format: 'json' }
       patch 'done', to: "reviews#done"
