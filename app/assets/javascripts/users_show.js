@@ -1,5 +1,38 @@
 $(function () {
 
+  var today = new Date();
+  var startDate = new Date()
+  startDate.setMonth(startDate.getMonth() - 11);
+
+  var cal = new CalHeatMap();
+  cal.init({
+    itemSelector: "#heatmap",
+    data: {
+      "1579186800": 2,
+      "1579100400": 8,
+      "1579014000": 5,
+      "1578927600": 10,
+      "1578841200": 25,
+    },
+    cellSize: 12,
+    domain: "month",
+    subDomain: "day",
+    range: 12,
+    tooltip: false,
+    start: startDate,
+
+    legend: [5, 10, 15, 20],
+    domainLabelFormat: "%b",
+    weekStartOnMonday: false,
+    legendCellSize: 12,
+    legendColors: {
+      min: "#efefef",
+      max: "green",
+      empty: "white",
+      overflow: "darkgreen"
+    }
+  });
+
   $('#goal-update-btn').hide();
 
   // 編集ボタンが押された場合
