@@ -7,6 +7,6 @@ class ReviewsController < ApplicationController
   end
 
   def reviewed_today
-    @reviews = current_user.reviews.where("(done = ?) AND (done_date <= ?)", true, Date.today).includes(:lesson)
+    @reviews = current_user.reviews.where("(done = ?) AND (done_date = ?)", true, Date.today).includes(:lesson)
   end
 end

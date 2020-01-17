@@ -1,4 +1,42 @@
 $(function () {
+  // 11ヶ月前から今月までの結果を描画するため
+  var startDate = new Date()
+  startDate.setMonth(startDate.getMonth() - 11);
+
+  // 受け取ったJSONを適切な形へ変換
+  var parser = function (data) {
+    var stats = {};
+    for (var d in data) {
+      stats[data[d].date] = data[d].count;
+    }
+    return stats;
+  };
+
+  // HeatMapの設定
+  var cal = new CalHeatMap();
+  cal.init({
+    itemSelector: "#heatmap",
+    data: "/api/users/get_study_records",
+    afterLoadData: parser,
+    cellSize: 14,
+    domain: "month",
+    subDomain: "day",
+    range: 12,
+    tooltip: false,
+    start: startDate,
+
+    legend: [0, 5, 10, 15],
+    domainLabelFormat: "%b",
+    weekStartOnMonday: false,
+    legendCellSize: 14,
+    legendColors: {
+      min: "#efefef",
+      max: "green",
+      empty: "white",
+
+    },
+    highlight: "now",
+  });
 
   $('#goal-update-btn').hide();
 
