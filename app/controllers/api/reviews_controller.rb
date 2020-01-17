@@ -27,7 +27,7 @@ class Api::ReviewsController < ApplicationController
       end
     end
     # ユーザの学習カウントを追加
-    User.find_by(id: current_user.id).update(study_count: (current_user.count))
+    User.find_by(id: current_user.id).update(study_count: (current_user.study_count+ 1))
 
   end
 end
