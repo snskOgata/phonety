@@ -139,6 +139,7 @@ $(function () {
     redisplay_sentence();
     redisplay_nextback();
     recognized_field.text("");
+    $("#done-btn").prop("disabled", false).css('background-color', 'white');
     $("#compare-btn").prop("disabled", true).css('background-color', 'lightgrey');
   })
 
@@ -147,6 +148,7 @@ $(function () {
     redisplay_sentence();
     redisplay_nextback();
     recognized_field.text("");
+    $("#done-btn").prop("disabled", false).css('background-color', 'white');
     $("#compare-btn").prop("disabled", true).css('background-color', 'lightgrey');
   })
 
