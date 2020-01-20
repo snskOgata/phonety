@@ -24,6 +24,7 @@ $(function () {
   var words_list = [];
   var correctness = 0;
   var correctness_list = []
+  var note_list = []
 
   var review_ids = []
   var lesson_ids = []
@@ -49,13 +50,16 @@ $(function () {
       $.each(reviews, function (i, review) {
         target_list.push(review.content);
         correctness_list.push(review.correctness);
+        note_list.push(review.note);
         review_ids.push(review.review_id);
         lesson_ids.push(review.lesson_id);
       });
 
-      target_sentence = target_list[0]
-      target_field.val(target_sentence)
-      fixed_field.text(target_sentence)
+      // 一つ目のreview要素の表示
+      target_sentence = target_list[0];
+      target_field.val(target_sentence);
+      fixed_field.text(target_sentence);
+      $("#note-text").html(note_list[0]);
     });
 
 
@@ -328,6 +332,7 @@ $(function () {
     target_field.val(target_list[current_num]);
     fixed_field.text(target_list[current_num]);
     $('#correctness').text(correctness_list[current_num] + "%")
+    $("#note-text").html(note_list[current_num]);
   }
 
   function redisplay_nextback() {

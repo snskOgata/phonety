@@ -197,3 +197,34 @@
     line-height: 25px;
   }
 }
+
+.lesson-note {
+  width: 1130px;
+  margin: 20px auto;
+  h4 {
+    color: darkblue;
+    font-size: 20px;
+    padding-bottom: 10px;
+  }
+  .note-field {
+    trix-editor {
+      h1 {
+        font-size: 30px;
+        font-weight: normal;
+      }
+      padding: 30px;
+      min-height: 300px;
+      font-size: 20px;
+      line-height: 35px;
+    }
+  }
+  .note-html {
+    border: 1px solid grey;
+    min-height: 100px;
+    padding: 30px;
+    h1 {
+      font-size: 35px;
+      font-weight: normal;
+    }
+  }
+}

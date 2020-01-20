@@ -23,6 +23,7 @@ $(function () {
   var words_list = [];
   var correctness = 0;
   var correctness_list = []
+  var note_list = [];
 
   // テキストフィールド
   var target_field = $("#target-text");
@@ -74,7 +75,8 @@ $(function () {
       type: "POST",
       data: {
         content: target_sentence,
-        correctness: correctness
+        correctness: correctness,
+        note: $("#note-field").val()
       },
       dataType: 'json'
     })
@@ -84,18 +86,20 @@ $(function () {
         if (index < 0) {
           target_list.push(target_sentence);
           correctness_list.push(correctness);
-          current_num = target_list.length - 1
+          note_list.push($("#note-field".val()));
+          current_num = target_list.length - 1;
         }
-        // リストに含まれる場合は精度を修正
+        // リストに含まれる場合は精度・ノートを修正
         else {
-          correctness_list[index] = correctness
+          correctness_list[index] = correctness;
+          note_list[index] = $("#note-field").val();
           // 該当のセンテンスの場所に移動
-          current_num = index
+          current_num = index;
         }
         $("#save-btn").prop("disabled", true).css('background-color', 'lightgrey');
       })
       .fail(function (e) {
-        alert("エラーが発生しました\nページを更新してください")
+        alert("エラーが発生しました\nページを更新してください");
       })
   })
 
@@ -330,7 +334,8 @@ $(function () {
   function redisplay_sentence() {
     target_field.val(target_list[current_num]);
     fixed_field.val(target_list[current_num]);
-    $('#correctness').text(correctness_list[current_num] + "%")
+    $('#correctness').text(correctness_list[current_num] + "%");
+    $("#note-field").val(note_list[current_num]);
   }
   function redisplay_nextback() {
     // backボタンのオンオフ
