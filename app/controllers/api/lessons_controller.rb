@@ -8,7 +8,8 @@ class Api::LessonsController < ApplicationController
       else
         # 新規ならば登録
         if lesson = Lesson.create(lesson_params)
-          #　レッスンを保存できたら復習を追加していく
+
+          # レッスンを保存できたら復習を追加していく
           today = Date.today
           dates_since = [1, 3, 7, 14, 21, 28]
           (0..5).each do |i|
@@ -39,6 +40,6 @@ class Api::LessonsController < ApplicationController
 
   private
     def lesson_params
-      params.permit(:content, :correctness).merge(user_id: current_user.id)
+      params.permit(:content, :correctness, :note).merge(user_id: current_user.id)
     end
 end
