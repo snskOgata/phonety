@@ -76,7 +76,7 @@ $(function () {
       data: {
         content: target_sentence,
         correctness: correctness,
-        note: $("#node-field").val()
+        note: $("#note-field").val()
       },
       dataType: 'json'
     })
@@ -86,13 +86,13 @@ $(function () {
         if (index < 0) {
           target_list.push(target_sentence);
           correctness_list.push(correctness);
-          note_list.push($("#node-field".val()));
+          note_list.push($("#note-field".val()));
           current_num = target_list.length - 1;
         }
         // リストに含まれる場合は精度・ノートを修正
         else {
           correctness_list[index] = correctness;
-          note_list[index] = $("#node-field".val();
+          note_list[index] = $("#note-field").val();
           // 該当のセンテンスの場所に移動
           current_num = index;
         }
@@ -335,7 +335,7 @@ $(function () {
     target_field.val(target_list[current_num]);
     fixed_field.val(target_list[current_num]);
     $('#correctness').text(correctness_list[current_num] + "%");
-    $("#note-field").val(note_list[current_num);]
+    $("#note-field").val(note_list[current_num]);
   }
   function redisplay_nextback() {
     // backボタンのオンオフ

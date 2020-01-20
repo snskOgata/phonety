@@ -8,7 +8,6 @@ class Api::LessonsController < ApplicationController
       else
         # 新規ならば登録
         if lesson = Lesson.create(lesson_params)
-
           # レッスンを保存できたら復習を追加していく
           today = Date.today
           dates_since = [1, 3, 7, 14, 21, 28]
