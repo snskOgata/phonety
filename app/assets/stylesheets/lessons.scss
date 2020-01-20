@@ -208,9 +208,14 @@
   }
   .note-field {
     trix-editor {
+      h1 {
+        font-size: 30px;
+        font-weight: normal;
+      }
       padding: 30px;
       min-height: 300px;
       font-size: 20px;
+      line-height: 35px;
     }
   }
 }
