@@ -3,4 +3,5 @@ json.array!(@reviews) do |review|
   json.lesson_id review.lesson.id
   json.correctness review.lesson.correctness
   json.content review.lesson.content
+  json.note review.lesson.note
 end
