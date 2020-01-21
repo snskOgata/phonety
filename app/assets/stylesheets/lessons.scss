@@ -69,6 +69,10 @@
           justify-content: right;
         }
       }
+      &__top {
+        display: flex;
+        justify-content: space-between;
+      }
       &__textarea {
         margin-top: 5px;
         padding: 10px 20px;

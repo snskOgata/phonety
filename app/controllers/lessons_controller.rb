@@ -7,6 +7,10 @@ class LessonsController < ApplicationController
   def new
   end
 
+  def show
+    @lesson = Lesson.find_by(id: params[:id], user_id: current_user.id)
+  end
+
   def today
     @lessons = current_user.lessons.where(created_at: Time.zone.now.all_day)
   end
