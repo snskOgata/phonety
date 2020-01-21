@@ -41,6 +41,7 @@ $(function () {
   $("#save-btn").prop("disabled", true).css('background-color', 'lightgrey');
 
   // 初期値設定
+  correctness = $('#correctness').text().replace(/[^0-9]/g, '');
   var target_sentence = target_field.val();
   target_field.focus();
 
@@ -74,7 +75,7 @@ $(function () {
       url: "/api/lessons",
       type: "POST",
       data: {
-        content: target_sentence,
+        content: $("#target-text").text(),
         correctness: correctness,
         note: $("#note-field").val()
       },
@@ -102,6 +103,26 @@ $(function () {
         alert("エラーが発生しました\nページを更新してください");
       })
   })
+
+  // 更新ボタンが押された場合
+  $('#update-btn').on('click', function () {
+    $.ajax({
+      url: location.pathname,
+      type: 'PATCH',
+      data: {
+        content: target_field.val(),
+        correctness: correctness,
+        note: $('#note-field').val()
+      }
+    }).done(function () {
+      $('#goal-edit-btn').show();
+      $('#goal-update-btn').hide();
+      $('#goal-text').prop("disabled", true).css('background-color', '#f5f5f5');
+    })
+      .fail(function () {
+        alert('更新に失敗しました。')
+      })
+  });
 
   $('#new-btn').on('click', function () {
     // 最新の番号を取得
