@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get :review, to: "reviews#today"
     get :reviewing, to: "reviews#reviewing"
     get :reviewed_today, to: "reviews#reviewed_today"
-    resources :lessons, only: [:index, :new, :show, :destroy] do
+    resources :lessons, only: [:index, :new, :show, :update, :destroy] do
       get :today, on: :collection
     end
     
