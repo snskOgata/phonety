@@ -9,6 +9,7 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = Lesson.find_by(id: params[:id], user_id: current_user.id)
+    @reviews = @lesson.reviews
   end
 
   def today

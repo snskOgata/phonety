@@ -1,4 +1,12 @@
 .new-lesson
+  .reviews
+    %h4 復習：
+    %br/
+    - @reviews.each do |review|
+      .review
+        = "#{review.count}： #{review.date} #{review.done ? "完了 精度：#{review.correctness}%" : "未完"} "
+        - if review.count == 3
+          %br/
   .lesson-container
     .lesson-container__left
       .target

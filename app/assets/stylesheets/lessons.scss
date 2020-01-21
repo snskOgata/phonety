@@ -3,6 +3,20 @@
   width: 100%;
 }
 
+.reviews {
+  width: 1150px;
+  margin: 10px auto;
+  h4 {
+    color: darkblue;
+  }
+  .review {
+    display: inline-block;
+    border: 1px solid lightgrey;
+    padding: 3px;
+    width: 300px;
+  }
+}
+
 .lesson-container {
   h4 {
     color: darkblue;
