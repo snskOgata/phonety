@@ -206,16 +206,24 @@
     font-size: 20px;
     padding-bottom: 10px;
   }
+
   .note-field {
     trix-editor {
-      h1 {
-        font-size: 30px;
-        font-weight: normal;
-      }
-      padding: 30px;
+      padding: 10px;
       min-height: 300px;
       font-size: 20px;
       line-height: 35px;
+      h1 {
+        font-size: 30px;
+        line-height: 40px;
+        font-weight: normal;
+      }
+      ul {
+        padding-left: 30px;
+      }
+      ol {
+        padding-left: 30px;
+      }
     }
   }
   .note-html {
