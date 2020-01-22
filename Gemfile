@@ -71,3 +71,4 @@ gem "jquery-rails"
 gem 'font-awesome-sass'
 gem 'devise'
 gem 'trix-rails', require: 'trix'
+gem 'kaminari'

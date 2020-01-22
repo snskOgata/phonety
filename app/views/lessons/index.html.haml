@@ -5,7 +5,7 @@
 - else
   - @lessons.each_with_index do |lesson, index|
     %ul
-      = "No.#{index}"
+      = params[:page] ? "No.#{params[:page].to_i - 1}#{index}" : "No.#{index}"
       %li
         = "日付：#{lesson.created_at.strftime('%Y/%m/%d')}"
       %li
@@ -16,3 +16,4 @@
         = link_to "詳細","/users/#{current_user.id}/lessons/#{lesson.id}"
         = link_to "削除","/users/#{current_user.id}/lessons/#{lesson.id}", method: :delete, data: {confirm: "削除しますか？"}
     %hr/
+= paginate @lessons
