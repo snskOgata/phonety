@@ -75,7 +75,7 @@ $(function () {
       url: "/api/lessons",
       type: "POST",
       data: {
-        content: $("#target-text").text(),
+        content: target_sentence,
         correctness: correctness,
         note: $("#note-field").val()
       },
@@ -87,7 +87,7 @@ $(function () {
         if (index < 0) {
           target_list.push(target_sentence);
           correctness_list.push(correctness);
-          note_list.push($("#note-field".val()));
+          note_list.push($("#note-field").val());
           current_num = target_list.length - 1;
         }
         // リストに含まれる場合は精度・ノートを修正
