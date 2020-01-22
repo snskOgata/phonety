@@ -17,13 +17,17 @@
       .contents
         = link_to user_review_path(user_id: current_user.id), class: "content content__even" do
           今日やる復習
-          - unless @reviews.empty?
-            .content__badge
-              = @reviews.length
+          - unless @today_reviewing.empty?
+            .content__badge.content__badge--red
+              = @today_reviewing.length
         = link_to "新しく学習を始める", new_user_lesson_path(user_id: current_user.id) , class: "content content__even"
         %hr/
         = link_to "今日新しく学んだこと", today_user_lessons_path(user_id: current_user.id) , class: "content content"
-        = link_to "今日復習したこと", user_reviewed_today_path(user_id: current_user.id) , class: "content content__even"
+        = link_to user_reviewed_today_path(user_id: current_user.id) , class: "content content__even" do
+          今日復習したこと
+          - unless @today_reviewed.empty?
+            .content__badge.content__badge--blue
+              = @today_reviewed.length
         %hr/
         = link_to "学習一覧", user_lessons_path(user_id: current_user.id) , class: "content"
     %hr/
