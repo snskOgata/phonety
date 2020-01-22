@@ -1,5 +1,7 @@
 %h1 学習一覧
 %hr/
+= paginate @lessons
+%hr/
 - if @lessons.empty?
   %h1 まだ学習はありません
 - else
