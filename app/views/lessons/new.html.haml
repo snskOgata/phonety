@@ -50,8 +50,9 @@
           %button#new-btn.btn
             new
         .controller__right
-          %button#finish-btn.btn
-            = link_to "Finish", today_user_lessons_path
+          = link_to today_user_lessons_path do
+            %button#finish-btn.btn
+              Finish
     .lesson-container__right
       .words-container
         .words-container__top
