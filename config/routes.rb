@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   namespace :api do
     resources :compares, only: :create
     resources :lessons, only: :create
+    resources :users, only: [] do
+      scope :reviews do
+        get 'today', to: "reviews#today", defaults: { format: 'json' }
+      end
+    end
 
     scope :users do
       get :get_study_records, to: "users#get_study_records", defaults: { format: 'json' }
