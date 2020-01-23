@@ -118,6 +118,13 @@
     .controller {
       height: 40px;
       padding-top: 5px;
+      display: flex;
+      justify-content: space-between;
+      &__right{
+        a {
+          text-decoration: none;
+        }
+      }
     }
 
     .btn {

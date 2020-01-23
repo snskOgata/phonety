@@ -40,14 +40,18 @@
             .correctness#correctness
               0%
       .controller
-        %button#save-btn.btn
-          save
-        %button#back-btn.btn
-          %i.fa.fa-backward.fa-
-        %button#next-btn.btn
-          %i.fa.fa-forward.fa-
-        %button#new-btn.btn
-          new
+        .controller__left
+          %button#save-btn.btn
+            save
+          %button#back-btn.btn
+            %i.fa.fa-backward.fa-
+          %button#next-btn.btn
+            %i.fa.fa-forward.fa-
+          %button#new-btn.btn
+            new
+        .controller__right
+          %button#finish-btn.btn
+            = link_to "Finish", today_user_lessons_path
     .lesson-container__right
       .words-container
         .words-container__top
