@@ -108,6 +108,12 @@
         &__right {
         display: flex;
         justify-content: right;
+        .btn {
+            margin-left: 10px;
+            a {
+              text-decoration: none;
+            }
+        }
         .recognition {
           padding-right: 10px;
         }
@@ -118,6 +124,13 @@
     .controller {
       height: 40px;
       padding-top: 5px;
+      display: flex;
+      justify-content: space-between;
+      &__right{
+        a {
+          text-decoration: none;
+        }
+      }
     }
 
     .btn {
