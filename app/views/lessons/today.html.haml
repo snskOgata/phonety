@@ -12,5 +12,5 @@
         %li
           = "精度：#{lesson.correctness}%"
         %li
-          = link_to "詳細","/users/#{current_user.id}/lessons/#{lesson.id}"
-          = link_to "削除","/users/#{current_user.id}/lessons/#{lesson.id}", method: :delete, data: {confirm: "削除しますか？"}
+          = link_to "詳細","/users/#{current_user.id}/lessons/#{lesson.id}", class: "uk-button uk-button-default"
+          = link_to "削除","/users/#{current_user.id}/lessons/#{lesson.id}", method: :delete, data: {confirm: "削除しますか？"}, class: "uk-button uk-button-danger"
