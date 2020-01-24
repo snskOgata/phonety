@@ -274,9 +274,16 @@
   .empty {
     text-align: center;
   }
+  .review-btn{
+    width: 60%;
+    margin: 0 auto;
+  }
   ul {
     li {
       list-style-type: none;
+      .buttons {
+        margin-top: 10px;
+      }
     }
   }
 }
