@@ -1,15 +1,16 @@
 %h1.uk-heading-small.uk-text-center 今日学習したもの
-%hr/
-- if @lessons.empty?
-  %h2 まだ今日の学習はありません
-- else
-  - @lessons.each_with_index do |lesson, index|
-    %ul
-      = "No.#{index}"
-      %li
-        = "内容：#{lesson.content}"
-      %li
-        = "精度：#{lesson.correctness}%"
-      %li
-        = link_to "詳細","/users/#{current_user.id}/lessons/#{lesson.id}"
-        = link_to "削除","/users/#{current_user.id}/lessons/#{lesson.id}", method: :delete, data: {confirm: "削除しますか？"}
+.index
+  %hr/
+  - if @lessons.empty?
+    %h2.empty まだ今日の学習はありません
+  - else
+    - @lessons.each_with_index do |lesson, index|
+      %ul
+        = "No.#{index}"
+        %li
+          = "内容：#{lesson.content}"
+        %li
+          = "精度：#{lesson.correctness}%"
+        %li
+          = link_to "詳細","/users/#{current_user.id}/lessons/#{lesson.id}"
+          = link_to "削除","/users/#{current_user.id}/lessons/#{lesson.id}", method: :delete, data: {confirm: "削除しますか？"}

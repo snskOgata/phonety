@@ -267,3 +267,16 @@
     }
   }
 }
+
+.index {
+  width: 80%;
+  margin: 10px auto;
+  .empty {
+    text-align: center;
+  }
+  ul {
+    li {
+      list-style-type: none;
+    }
+  }
+}

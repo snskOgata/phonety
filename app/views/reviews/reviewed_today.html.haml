@@ -1,14 +1,15 @@
 %h1.uk-heading-small.uk-text-center 今日やった復習
-%hr/
-- if @reviews.empty?
-  %h2 今日完了した復習はありません
-- else
-  - @reviews.each_with_index do |review, i|
-    %ul
-      %li
-        = "復習: #{review.count}回目　学習日：#{review.lesson.created_at.strftime('%Y/%m/%d')}"
-      %li
-        = "内容: #{review.lesson.content}"
-      %li
-        = "精度: #{review.correctness}"
-    %hr/
+.index
+  %hr/
+  - if @reviews.empty?
+    %h2 今日完了した復習はありません
+  - else
+    - @reviews.each_with_index do |review, i|
+      %ul
+        %li
+          = "復習: #{review.count}回目　学習日：#{review.lesson.created_at.strftime('%Y/%m/%d')}"
+        %li
+          = "内容: #{review.lesson.content}"
+        %li
+          = "精度: #{review.correctness}"
+      %hr/
