@@ -5,7 +5,7 @@ class Api::ReviewsController < ApplicationController
   end
 
   def get_list_today
-    @reviews = current_user.reviews.where("(done = ?) AND (date <= ?)", false, Date.today).includes(:lesson)
+    @reviews = current_user.reviews.where("(done = ?) AND (date <= ?)", false, Date.today.end_of_day).includes(:lesson)
   end
 
   def done
