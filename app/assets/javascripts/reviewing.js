@@ -38,7 +38,6 @@ $(function () {
   var recognized_field = $("#recognized-text");
 
   // ボタンの初期設定
-  $("#refresh-btn").prop("disabled", true).css('background-color', 'lightgrey');
   $("#compare-btn").prop("disabled", true).css('background-color', 'lightgrey');
   $("#back-btn").prop("disabled", true).css('background-color', 'lightgrey');
 
