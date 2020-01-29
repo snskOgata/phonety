@@ -1,7 +1,7 @@
 class LessonsController < ApplicationController
 
   def index
-    @lessons = current_user.lessons.page(params[:page]).per(10).order('updated_at DESC')
+    @lessons = current_user.lessons.page(params[:page]).per(10)
   end
 
   def new
