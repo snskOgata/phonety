@@ -134,6 +134,8 @@ $(function () {
     target_field.val("").show().focus();
     fixed_field.val("").hide();
     recognized_field.text("");
+    $("#note-field").val("");
+    $('#trix-editor').html("");
 
     // next/backボタンの更新
     $("#correctness").text("0%")
