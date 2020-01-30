@@ -170,7 +170,7 @@ $(function () {
   })
 
   $('#refresh-btn').on('click', function () {
-    fixed_field.text(target_sentence);
+    fixed_field.text(target_list[current_num]);
   })
 
   $('#rec-btn').on('click', function () {
