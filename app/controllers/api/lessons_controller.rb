@@ -9,7 +9,7 @@ class Api::LessonsController < ApplicationController
         # 新規ならば登録
         if lesson = Lesson.create(lesson_params)
           # レッスンを保存できたら復習を追加していく
-          today = Date.today
+          today = Time.zone.now.to_date
           dates_since = [1, 3, 7, 14, 21, 28]
           (0..5).each do |i|
             Review.create(user_id: current_user.id, lesson_id: lesson.id, count: (i + 1), date: (today + dates_since[i]))
@@ -20,7 +20,7 @@ class Api::LessonsController < ApplicationController
       end
 
       # 学習履歴のカウントアップ
-      if record = StudyRecord.find_or_initialize_by(user_id: current_user.id, date: Date.today)
+      if record = StudyRecord.find_or_initialize_by(user_id: current_user.id, date: Time.zone.now.to_date)
         # レコードが既に存在していたらカウントアップ、なければ追加
         if record.persisted?
           record.update(count: (record.count+1))
