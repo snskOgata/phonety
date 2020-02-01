@@ -115,28 +115,54 @@ $(function () {
   }
 
 
+
   // 比較結果の表示
   function showResult(operation) {
-    var target = "";
-    var recognized = "";
-    var correct_num = 0
     var ss; // 操作と単語を分離 e.g.)"+:Hello" -> "+", "Hello"
+
+    //比較前にテキストを空に
+    $("#fixed-text").text("")
+    $("#recognized-text").text("")
 
     $.each(operation, function (i, value) {
       ss = value.split(":");
 
+      //正しく発音できたもの
       if (ss[0] === "|") {
-        target += "<span style=\"color:black\">" + ss[1] + " </span>";
-        recognized += "<span style=\"color:black\">" + ss[1] + " </span>";
+        var elem1 = document.createElement("span");
+        elem1.textContent = ss[1] + " ";
+        $("#fixed-text").append(elem1)
+        var elem2 = document.createElement("span");
+        elem2.textContent = ss[1] + " ";
+        $("#recognized-text").append(elem2)
       }
+      //ターゲット文で一致がなかったもの
       else if (ss[0] === "-") {
-        target += "<span style=\"color:red\">" + ss[1] + " </span>";
+        var elem = document.createElement("span");
+        elem.textContent = ss[1] + " ";
+
+        elem.style.color = 'red'
+        elem.style.cursor = "pointer"
+        elem.onclick = function () {
+          speechSynthesis.cancel();
+          synthe.text = this.textContent;
+          speechSynthesis.speak(synthe);
+        };
+        $("#fixed-text").append(elem);
       }
+      //認識文で一致がなかったもの
       else if (ss[0] === "+") {
-        recognized += "<span style=\"color:red\">" + ss[1] + " </span>";
+        var elem = document.createElement("span");
+        elem.textContent = ss[1] + " ";
+        elem.style.color = 'red'
+        elem.style.cursor = "pointer"
+        elem.onclick = function () {
+          speechSynthesis.cancel();
+          synthe.text = this.textContent;
+          speechSynthesis.speak(synthe);
+        };
+        $("#recognized-text").append(elem)
       }
     })
-    $("#fixed-text").text("").append(target);
-    $("#recognized-text").text("").append(recognized);
   }
 });

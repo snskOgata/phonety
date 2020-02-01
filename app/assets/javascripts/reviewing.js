@@ -206,7 +206,6 @@ $(function () {
 
   // 比較結果の表示
   function showResult(operation) {
-    var recognized = "";
     var correct_num = 0
     var wrong_num = 0
     var ss; // 操作と単語を分離 e.g.)"+:Hello" -> "+", "Hello"
