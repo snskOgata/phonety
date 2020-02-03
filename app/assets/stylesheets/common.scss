@@ -1,5 +1,4 @@
 * {
-  font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
   box-sizing: border-box;
 }
 
@@ -17,6 +16,9 @@
       font-size: 32px;
       line-height: 40px;
       color: white;
+      &:hover {
+        color: white;
+      }
     }
   }
   &__right {
@@ -30,6 +32,9 @@
       padding-left: 20px;
       color: white;
       font-size: 18px;
+      &:hover {
+        color: white;
+      }
       &:active {
         color: lightgrey;
       }
@@ -42,6 +47,7 @@ main {
 }
 
 .footer {
+  margin-top: 10px;
   padding: 20px 10px;
   background-color: lightgrey;
   width: 100%;

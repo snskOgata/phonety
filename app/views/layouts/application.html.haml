@@ -12,10 +12,10 @@
       .header__left
         - if user_signed_in?
           =link_to current_user do
-            %h1 Phonety
+            %h1.uk-logo Phonety
         - else
           =link_to root_path do
-            %h1 Phonety
+            %h1.uk-logo Phonety
       .header__right
         - if user_signed_in?
           = link_to current_user, class: "header__right__link" do
