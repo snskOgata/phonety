@@ -8,14 +8,14 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   %body
-    %header.header
+    %header.header.uk-card.uk-card-default.uk-card-body{style: "z-index: 980;", "uk-sticky": "bottom: #offset"}
       .header__left
         - if user_signed_in?
           =link_to current_user do
-            %h1 Phonety
+            %h1.uk-logo Phonety
         - else
           =link_to root_path do
-            %h1 Phonety
+            %h1.uk-logo Phonety
       .header__right
         - if user_signed_in?
           = link_to current_user, class: "header__right__link" do

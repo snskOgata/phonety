@@ -1,39 +1,76 @@
 .home
-  .trial-box
-    .target
-      .target__top
-        %h4 ターゲット文
-        .target__top__speed
-          %h4 読み上げスピード:
-          %select#speed-selector.target__top__speed__selector
-            - (5..20).each do |s|
-              %option{:value=>s/10.to_f, :selected => s == 10}
-                = s/10.to_f
-      %textarea.target__textarea#target-text
-        I am not discouraged, because every wrong attempt discarded is another step forward.
-      .target__fixed-text#fixed-text
-        I am not discouraged, because every wrong attempt discarded is another step forward.
-      .target__bottom
-        .target__bottom__left
-          %button#edit-btn.btn
-            edit
-          %button#set-btn.btn
-            set
-          %button#refresh-btn.btn
-            refresh
-        .target__bottom__right
-          %i.fa.fa-play.fa-#speech-btn.icon
-          %i.fa.fa-stop.fa-#cancel-btn.icon
-            
-    .recognized
-      %h4 認識文
-      .recognized__textarea#recognized-text
-        I am not discouraged, because every wrong attempt discarded is another step forward.
-      .recognized__bottom
-        %button#rec-btn.btn
-          rec
-        %button#stop-btn.btn
-          stop
-        %button#compare-btn.btn
-          compare
-= javascript_include_tag "home.js"
+  .uk-container{style: 'width: 90%'}
+    %div{class: "uk-grid-collapse uk-child-width-expand@s uk-text-center uk-margin-large-top", "uk-grid": "", style: 'min-height: calc(100vh - 250px)'}
+      .uk-container
+        .uk-heading-small.uk-text-primary.uk-height-medium.uk-flex.uk-flex-center.uk-flex-middle
+          あなたの英語学習を
+          %br/
+          より実力がつくものに！
+        .bottons{style: 'margin-bottom: 30px'}
+          = link_to new_user_registration_path, class: "uk-button uk-button-primary uk-button-large" do
+            新規登録  
+          = link_to new_user_session_path, class: "uk-button uk-button-primary uk-button-large uk-margin-medium-left" do
+            ログイン
+      %div{class: "uk-child-width-1-2@m", "uk-grid": "", style: 'min-width: 700px'}
+        .uk-inline{style: 'width: 100%'}
+          = image_tag 'step_up.jpg', alt: 'step up image', size: '600x600', class: 'uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light',
+            style: 'width: 100%'
+          少しずつ、けれど着実に
+    .uk-text-large.uk-text-bold{style: 'margin-top: 30px'} 3つの特徴
+    %div{class: "uk-child-width-1-3@m", "uk-grid": "", "uk-scrollspy": "cls: uk-animation-slide-bottom; target: .uk-card; delay: 300; repeat: true",
+      style: 'max-witdh:800px; margin-top: 20px'}
+      %div
+        .uk-card.uk-card-default.uk-card-body.uk-card-hover{style: 'height: 350px'}
+          %h3.uk-card-title 様々な学習サポート
+          音声合成・音声認識・文章比較により、あなたの学習をより効果的に！
+          = image_tag 'voice_recognition.jpg', alt: 'voice recognition image', size: "400x120", class: 'uk-card-media-bottom', style: 'max-height: 215px; margin: 10px auto;'
+      %div
+        .uk-card.uk-card-default.uk-card-body.uk-card-hover{style: 'height: 350px'}
+          %h3.uk-card-title 復習サイクル
+          忘却曲線に則った最適な復習のタイミングを管理！
+          = image_tag 'forgetting_curve.png', alt: 'forgetting curve image', size: "400x120", class: 'uk-card-media-bottom', style: 'max-height: 250px; margin: 10px auto;'
+      %div
+        .uk-card.uk-card-default.uk-card-body.uk-card-hover{style: 'height: 350px'}
+          %h3.uk-card-title 学習履歴の可視化
+          あなたの頑張りを目に見える形に
+          = image_tag 'learn_history.png', alt: 'learn history image', size: "400x120", class: 'uk-card-media-bottom', style: 'max-height: 250px; margin: 10px auto;'
+    %h1.uk-heading-small.uk-text-center.uk-text-primary
+      実際にやってみよう
+    .trial-box.uk-container.uk-container-small	
+      .target
+        .target__top
+          %h4 ターゲット文
+          .target__top__speed
+            %h4 読み上げスピード:
+            %select#speed-selector.target__top__speed__selector
+              - (5..20).each do |s|
+                %option{:value=>s/10.to_f, :selected => s == 10}
+                  = s/10.to_f
+        %textarea.target__textarea#target-text
+          I am not discouraged, because every wrong attempt discarded is another step forward.
+        .target__fixed-text#fixed-text
+          I am not discouraged, because every wrong attempt discarded is another step forward.
+        .target__bottom
+          .target__bottom__left
+            %button#edit-btn.btn
+              edit
+            %button#set-btn.btn
+              set
+            %button#refresh-btn.btn
+              refresh
+            %i.fa.fa-play.fa-#speech-btn.icon
+            %i.fa.fa-stop.fa-#cancel-btn.icon
+          .target__bottom__right
+              
+      .recognized
+        %h4 認識文
+        .recognized__textarea#recognized-text
+          ↓「rec」を押して、上の文章を読み上げてみよう！
+        .recognized__bottom
+          %button#rec-btn.btn
+            rec
+          %button#stop-btn.btn
+            stop
+          %button#compare-btn.btn
+            compare
+  = javascript_include_tag "home.js"

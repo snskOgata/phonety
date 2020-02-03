@@ -15,5 +15,6 @@
 //= require rails-ujs
 //= require activestorage
 //= require uikit.min
+
 //= require uikit-icons.min
 // require_tree .

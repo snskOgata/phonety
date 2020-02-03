@@ -24,8 +24,9 @@ $(function () {
     range: 12,
     tooltip: false,
     start: startDate,
+    tooltip: true,
 
-    legend: [0, 5, 10, 15],
+    legend: [0, 5, 10, 15, 20, 25],
     domainLabelFormat: "%b",
     weekStartOnMonday: false,
     legendCellSize: 14,
@@ -33,7 +34,6 @@ $(function () {
       min: "#efefef",
       max: "green",
       empty: "white",
-
     },
     highlight: "now",
   });

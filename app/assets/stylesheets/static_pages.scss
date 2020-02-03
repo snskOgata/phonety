@@ -4,20 +4,13 @@
 }
 
 .trial-box {
-  background-color: blue;;
-  width: 900px;
-  margin: 50px auto;
-  padding: 30px;
-  border: 1px solid grey;
-
   .target {
-    width: 840px;
+    width: 100%;
     &__top {
       margin-bottom: 5px;
       display: flex;
       justify-content: space-between;
       h4 {
-       color: white;
        display: inline;
       }
       &__speed {
@@ -33,7 +26,7 @@
       line-height: 35px;
       font-size: 20px;
       height: 200;
-      width: 840px;
+      width: 100%;
       border: 0;
       resize: none;
       display: none;
@@ -47,7 +40,7 @@
       line-height: 35px;
       font-size: 20px;
       height: 200;
-      width: 840px;
+      width: 100%;
     }
     &__bottom {
       margin-top: 3px;
@@ -58,7 +51,6 @@
 
   .recognized {
     h4 {
-      color: white;
     }
     margin-top: 30px;
     &__textarea {
@@ -68,7 +60,7 @@
       line-height: 35px;
       font-size: 20px;
       height: 200;
-      width: 840px;
+      width: 100%;
       background-color: white;
       border: 1px solid black;
     }
