@@ -1,24 +1,26 @@
 .home
   .uk-container{style: 'width: 90%'}
-    %div{class: "uk-grid-collapse uk-child-width-expand@s uk-text-center uk-margin-large-top", "uk-grid": "", style: 'min-height: calc(100vh - 250px)'}
-      .uk-container
-        .uk-heading-small.uk-text-primary.uk-height-medium.uk-flex.uk-flex-center.uk-flex-middle
+    %div{class: "uk-grid-collapse uk-child-width-expand@s uk-text-center", "uk-grid": "",
+      style: 'min-height: calc(100vh - 250px); margin-top: 40px'}
+      .uk-container.uk-background-muted{style: 'height: 440px'}
+        .uk-heading-small.uk-text-primary.uk-height-medium.uk-flex.uk-flex-center.uk-flex-middle.uk-text-bolder
           あなたの英語学習を
           %br/
           より実力がつくものに！
         .bottons{style: 'margin-bottom: 30px'}
-          = link_to new_user_registration_path, class: "uk-button uk-button-primary uk-button-large" do
+          = link_to new_user_registration_path, class: "uk-button uk-button-primary uk-button-large uk-text-bold" do
             新規登録  
-          = link_to new_user_session_path, class: "uk-button uk-button-primary uk-button-large uk-margin-medium-left" do
+          = link_to new_user_session_path, class: "uk-button uk-button-primary uk-button-large uk-margin-medium-left uk-text-bold" do
             ログイン
       %div{class: "uk-child-width-1-2@m", "uk-grid": "", style: 'min-width: 700px'}
-        .uk-inline{style: 'width: 100%'}
+        .uk-inline{style: 'width: 100%; position: relative;'}
           = image_tag 'step_up.jpg', alt: 'step up image', size: '600x600', class: 'uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light',
             style: 'width: 100%'
-          少しずつ、けれど着実に
-    .uk-text-large.uk-text-bold{style: 'margin-top: 30px'} 3つの特徴
+          %h3.picture-word{style: "font-weight: bold; font-size: 32px; position: absolute; top: 15px; left: 50%; transform: translateX(-45%);"}
+            少しずつ、けれど着実に
+    .uk-text-large.uk-text-bold.uk-background-primary{style: 'color: white; padding: 10px; text-align: center; font-size: 32px'} 3つの特徴
     %div{class: "uk-child-width-1-3@m", "uk-grid": "", "uk-scrollspy": "cls: uk-animation-slide-bottom; target: .uk-card; delay: 300; repeat: true",
-      style: 'max-witdh:800px; margin-top: 20px'}
+      style: 'max-witdh:800px; margin-top: 0; padding: 30px'}
       %div
         .uk-card.uk-card-default.uk-card-body.uk-card-hover{style: 'height: 350px'}
           %h3.uk-card-title 様々な学習サポート
@@ -27,7 +29,7 @@
       %div
         .uk-card.uk-card-default.uk-card-body.uk-card-hover{style: 'height: 350px'}
           %h3.uk-card-title 復習サイクル
-          忘却曲線に則った最適な復習のタイミングを管理！
+          忘却曲線に則った最適な復習管理！
           = image_tag 'forgetting_curve.png', alt: 'forgetting curve image', size: "400x120", class: 'uk-card-media-bottom', style: 'max-height: 250px; margin: 10px auto;'
       %div
         .uk-card.uk-card-default.uk-card-body.uk-card-hover{style: 'height: 350px'}
