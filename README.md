@@ -3,6 +3,8 @@
 Heroku:
 https://arcane-waters-08193.herokuapp.com/
 
+※アプリはGoogle Chromeでのみ使用可能です
+
 ### サービス内容
 英語学習支援アプリケーション
 
