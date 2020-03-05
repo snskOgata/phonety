@@ -2,8 +2,11 @@
 
 Heroku:
 https://arcane-waters-08193.herokuapp.com/
-
 ※アプリはGoogle Chromeでのみ使用可能です
+
+テストユーザ
+email: test@gmail.com
+password: foobar
 
 ### サービス内容
 英語学習支援アプリケーション
